@@ -4,11 +4,18 @@ description: My graduation thesis. A 'whodunit' game that experiments with real-
 date: '2023-4-14'
 category: project
 published: true
+youtubeURL: https://www.youtube.com/embed/e1HN3MVz4hs?si=VVxP0dMiau2VbU7e
 ---
 
 <script>
    import Summary from '$lib/components/svx/Summary.svelte';
 </script>
+
+
+<div class="flex mt-4">
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/e1HN3MVz4hs?si=VVxP0dMiau2VbU7e"
+ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 # What is Detective Duck? 
 

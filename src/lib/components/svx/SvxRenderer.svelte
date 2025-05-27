@@ -39,8 +39,12 @@
             @apply my-4 py-4 first:mt-0;
          }
 
+         h2 {
+            @apply my-2 py-2;
+         }
+
          .toc {
-            @apply max-w-64 rounded-3xl border-[2px] border-accent/70 bg-gradient-to-t from-accent/50 to-background-900/50 px-4 py-4;
+            @apply max-w-[65%] rounded-3xl border-[2px] border-accent/70 bg-gradient-to-t from-accent/50 to-background-900/50 px-4 py-4;
          }
 
          .toc::before {
@@ -48,12 +52,24 @@
             @apply text-xl font-extrabold;
          }
 
+         .toc ol {
+            @apply list-inside list-[">_"] text-primary;
+         }
+
          ol {
-            @apply list-inside text-primary;
+            @apply mx-4 list-outside list-decimal p-0;
+         }
+
+         ol li {
+            @apply my-2 pl-2;
+         }
+
+         ol li ::marker {
+            @apply m-8 block px-2;
          }
 
          ul {
-            @apply list-inside list-disc;
+            @apply ms-4 list-outside list-disc;
          }
 
          ul ul {
@@ -61,15 +77,15 @@
          }
 
          ul li {
-            @apply my-2;
+            @apply mx-4 my-2;
          }
 
          ::marker {
-            @apply text-primary;
+            @apply px-4 text-red-500;
          }
 
          .toc-item {
-            @apply border-b-2 border-accent pb-5 pt-4 text-justify;
+            @apply text-justify;
             line-height: 100%;
          }
 
@@ -77,24 +93,31 @@
             @apply underline hover:rounded-sm hover:bg-primary hover:text-black;
          }
 
-         .toc-item::before {
-            content: '>';
-            @apply me-2 font-extralight text-white no-underline;
-         }
-
          .toc-item:last-child {
             @apply border-b-0;
          }
 
          .shiki {
-            @apply overflow-x-scroll;
+            @apply my-2 overflow-x-scroll py-2;
          }
 
          a {
             @apply text-primary underline;
          }
 
-         code {
+         p {
+            @apply my-2;
+         }
+
+         table {
+            @apply m-2 border-4 bg-accent/50;
+         }
+         td {
+            @apply p-2;
+         }
+
+         .shiki code {
+            @apply bg-none;
             counter-reset: step;
             counter-increment: step calc(var(--start, 1) - 1);
 
@@ -107,6 +130,10 @@
                text-align: right;
                color: rgba(115, 138, 148, 0.4);
             }
+         }
+
+         code:not(.shiki code) {
+            @apply rounded-sm bg-accent px-2 py-1;
          }
       }
    }

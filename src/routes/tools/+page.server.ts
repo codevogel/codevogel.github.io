@@ -4,6 +4,6 @@ import type { Post } from '$lib/model';
 export async function load({ fetch }) {
     const response = await fetch('/api/posts');
     let posts: Post[] = await response.json();
-    posts = posts.filter((post) => post.category === 'project');
+    posts = posts.filter((post) => post.category === 'tool');
     return { posts }; 
 }

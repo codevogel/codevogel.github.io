@@ -7,6 +7,7 @@
    const routes = [
       { name: 'Home', href: '/', hovered: false },
       { name: 'Projects', href: '/projects/', hovered: false },
+      { name: 'Tools', href: '/tools/', hovered: false },
       { name: 'Contact', href: '/contact/', hovered: false }
    ];
 

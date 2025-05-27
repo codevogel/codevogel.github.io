@@ -1,4 +1,4 @@
-export type PostCategory = 'project' | 'blog';
+export type PostCategory = 'project' | 'tool';
 
 export type WorkExperience = {
    company: {
