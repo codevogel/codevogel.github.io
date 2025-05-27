@@ -12,6 +12,10 @@ Project Level Shortcuts (pls) is a command-line tool designed to streamline your
 
 Run your most frequently used commands with ease, e.g. `pls test` to run tests, `pls godot` to open your Godot project and editor, `pls open-here` to open the current directory in your file manager, and whatever else you can think of!
 
+### Demo
+
+![demo](https://raw.githubusercontent.com/codevogel/pls/refs/heads/main/assets/img/demo.gif)
+
 ### Quick Start 🚀 
 
 - **Install**
@@ -39,6 +43,30 @@ Run your most frequently used commands with ease, e.g. `pls test` to run tests, 
   docker build -t plsbuntu . --no-cache
   docker run -it plsbuntu
   ```
+
+### Table of Contents
+
+- [Quick Start](#quick-start-)
+- [What is pls and why do I want pls?](#what-is-pls-and-why-do-i-want-pls)
+- [Getting started](#getting-started)
+  - [Installation](#installation)
+    - [Dependencies](#dependencies)
+    - [Instructions](#instructions)
+  - [Usage](#usage)
+- [Command overview](#command-overview)
+  - [Operation Flags](#operation-flags)
+  - [Other Flags](#other-flags)
+  - [Examples](#examples)
+    - [Real World Examples](#real-world-examples)
+- [Execute commands in the main shell](#execute-commands-in-the-main-shell)
+  - [If your main shell is bash](#if-your-main-shell-is-bash)
+  - [If your main shell is not bash](#if-your-main-shell-is-not-bash)
+    - [Real-world example](#real-world-example)
+- [File format](#file-format)
+- [Command cache](#command-cache)
+- [Configuration](#configuration)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
 
 ## What is pls and why do I want pls?
 
@@ -83,26 +111,14 @@ Run your most frequently used commands with ease, e.g. `pls test` to run tests, 
 
   1. Download the `pls` script and extract it to a directory on your `PATH` (or add it to your `PATH` in step 2).
      
-     - using `curl`: 
-     ```bash
-     curl -O https://raw.githubusercontent.com/codevogel/pls/main/release/pls
-     ```
-     - using `wget`: 
-     ```bash
-     wget https://raw.githubusercontent.com/codevogel/pls/main/release/pls
-     ```
+     - using `curl`: `curl -O https://raw.githubusercontent.com/codevogel/pls/main/release/pls`
+     - using `wget`: `wget https://raw.githubusercontent.com/codevogel/pls/main/release/pls`
      - Clone this repository and copy the `release/pls` script.
      - Download the `pls` script from [here](https://github.com/codevogel/pls/blob/main/release/pls) manually.
 
   2. Add the `pls` script to your `PATH`.
-     - If your shell is `bash`: 
-     ```bash
-     echo 'export PATH="$PATH:/path/to/dir"' >> ~/.bashrc
-     ```
-     - If your shell is `zsh`: 
-     ```bash
-     echo 'export PATH="$PATH:/path/to/dir"' >> ~/.zshrc
-     ```
+     - If your shell is `bash`: `echo 'export PATH="$PATH:/path/to/dir"' >> ~/.bashrc`
+     - If your shell is `zsh`: `echo 'export PATH="$PATH:/path/to/dir"' >> ~/.zshrc`
      - If your shell is something else, do the equivalent of the above.
   3. Optionally, add support for running the commands in your main shell process. See the [Use in main shell](#use-in-main-shell) section for more information.
   3. Test the installation by running `pls --help`.
@@ -183,6 +199,47 @@ These are the flags that do not represent operations. Some of them are used to p
 ### Examples
 
 View [`EXAMPLES.md` (here)](EXAMPLES.md) to see some examples of how to use commands that `pls` provides.
+
+#### Real World Examples
+
+Given the following `.pls.yml`:
+
+```yml
+commands:
+   - alias: clone
+     command: |
+          git clone git@github.com:codevogel/$1.git
+   - alias: nvimconf
+     command: |
+          cd ~/.config/nvim/lua
+   - alias: bright
+     command: |
+          sudo brightnessctl set $1
+   - alias: se
+     command: |
+          $1 & 
+          disown
+          exit
+```
+
+We can now run the following commands:
+
+```
+# Clone a repository under my account by name
+$ pls clone svelte-db-portal
+
+# Sets the display brightness to 100%
+$ pls bright 100%
+
+## The following two commands require you to 'Execute commands in the main shell' (see next section).
+
+# Takes you to a frequently used directory (in this case ~/.config/nvim/lua)
+$ plz nvimconf
+
+# Launches <executable>, disowns the process from the shell, and then closes the terminal.
+$ plz se <executable>
+```
+
 
 ## Execute commands in the main shell
 
@@ -319,5 +376,3 @@ Make sure each of these variables is on a new line in the `.plsrc` file, and tha
 
 ## Contributing
 Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information on how to contribute to this project.
-
-
