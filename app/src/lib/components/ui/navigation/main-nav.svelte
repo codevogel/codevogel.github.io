@@ -5,6 +5,6 @@
 
 <nav class="flex flex-row">
 	{#each pages as page (page.path)}
-		<Button variant="ghost" href={page.path}>{page.name}</Button>
+		<Button variant="nav" href={page.path}>{page.name}</Button>
 	{/each}
 </nav>
