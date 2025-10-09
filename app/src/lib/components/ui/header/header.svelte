@@ -1,9 +1,16 @@
 <script lang="ts">
 	import MainNav from '$lib/components/ui/header/navigation/main-nav.svelte';
 	import LogoCodevogelText from '$lib/components/ui/header/logo/logo-codevogel-text.svelte';
+	import WaveBorder from '$lib/components/ui/header/waveborder/wave-border.svelte';
 </script>
 
-<header class="flex flex-col bg-accent/30 p-4 gap-y-2">
-	<LogoCodevogelText />
-	<MainNav />
+<header class="flex flex-col overflow-x-clip bg-accent/30 items-center">
+	<div class="flex flex-col p-2">
+		<LogoCodevogelText />
+		<MainNav />
+	</div>
+	<WaveBorder
+		flipY={true}
+		className="place-self-start z-50 h-12 border-b-[1px] border-accent/50 bg-gradient-to-b shadow-2xl shadow-black/50"
+	/>
 </header>
