@@ -1,8 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import MainNav from '$lib/components/ui/navigation/main-nav.svelte';
-
+	import Header from '$lib/components/ui/header/header.svelte';
 	let { children } = $props();
 </script>
 
@@ -10,5 +9,6 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<MainNav />
+<Header />
+
 {@render children?.()}
