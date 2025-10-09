@@ -11,6 +11,6 @@
 	</div>
 	<WaveBorder
 		flipY={true}
-		className="place-self-start z-50 h-12 border-b-[1px] border-accent/50 bg-gradient-to-b shadow-2xl shadow-black/50"
+		className="place-self-start z-50 h-12 "
 	/>
 </header>
