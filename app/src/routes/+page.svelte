@@ -3,7 +3,14 @@
 	import NameBreakdown from '$lib/components/ui/hero/name-breakdown.svelte';
 </script>
 
-<div class="px-8">
+<div>
 	<BirdHero />
+</div>
+<div>
 	<NameBreakdown />
 </div>
+<div>
+	<NameBreakdown />
+</div>
+
+

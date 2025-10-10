@@ -98,7 +98,12 @@
 }
 
 @theme {
-  --height-navbar: calc(var(--spacing)*48);
+  --height-page: calc(100dvh);
+  --height-header: calc(var(--spacing)*48);
+  --height-footer: calc(var(--spacing)*12);
+  --height-page-without-header: calc(var(--height-page) - var(--height-header));
+  --height-page-without-footer: calc(var(--height-page) - var(--height-footer));
+  --height-page-without-header-and-footer: calc(var(--height-page) - var(--height-footer) - var(--height-header));
 }
 
 @theme inline {
