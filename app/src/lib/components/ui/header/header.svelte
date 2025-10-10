@@ -4,7 +4,7 @@
 	import WaveBorder from '$lib/components/ui/header/waveborder/wave-border.svelte';
 </script>
 
-<header class="flex flex-col overflow-x-clip bg-accent/30 items-center">
+<header class="flex flex-col overflow-x-clip bg-accent/30 items-center h-48">
 	<div class="flex flex-col p-2">
 		<LogoCodevogelText />
 		<MainNav />

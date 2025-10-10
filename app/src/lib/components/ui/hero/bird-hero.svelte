@@ -37,15 +37,16 @@
 	};
 </script>
 
-
-<div class="grid h-72 grid-cols-1 place-items-center content-end">
-	<Typewriter
-		{message}
-		baseClass="max-w-[28ch] w-[28ch] bg-accent rounded-lg p-4"
-		pregrow={false}
-	/>
-	<div
-		class="h-0 w-0 border-t-[15px] border-r-[15px] border-l-[15px] border-accent border-r-transparent border-l-transparent"
-	></div>
-	<img src="logos/logo-codevogel-head.svg" class="mt-4 w-24" alt="codevogel logo head" />
+<div class="min-h-[calc(100dvh-(var(--spacing)*(48+8)))] flex flex-col items-center justify-center">
+	<div class="grid grid-cols-1 place-items-center content-end h-48 mt-24">
+		<Typewriter
+			{message}
+			baseClass="max-w-[28ch] w-[28ch] bg-accent rounded-lg p-4"
+			pregrow={false}
+		/>
+		<div
+			class="h-0 w-0 border-t-[15px] border-r-[15px] border-l-[15px] border-accent border-r-transparent border-l-transparent"
+		></div>
+		<img src="logos/logo-codevogel-head.svg" class="mt-4 w-24" alt="codevogel logo head" />
+	</div>
 </div>
