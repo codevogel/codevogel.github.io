@@ -4,6 +4,6 @@
 </script>
 
 <div class="px-8">
-		<BirdHero />
+	<BirdHero />
 	<NameBreakdown />
 </div>

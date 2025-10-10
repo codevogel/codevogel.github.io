@@ -97,6 +97,10 @@
   --shadow-2xl: 0 1px 3px 0px oklch(0 0 0 / 0.25);
 }
 
+@theme {
+  --height-navbar: calc(var(--spacing)*48);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

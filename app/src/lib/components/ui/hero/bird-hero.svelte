@@ -37,7 +37,7 @@
 	};
 </script>
 
-<div class="min-h-[calc(100dvh-(var(--spacing)*(48+8)))] flex flex-col items-center justify-center">
+<div class="min-h-[calc(100dvh-((var(--height-navbar)))-(var(--spacing)*(8)))] flex flex-col items-center justify-center">
 	<div class="grid grid-cols-1 place-items-center content-end h-48 mt-24">
 		<Typewriter
 			{message}
