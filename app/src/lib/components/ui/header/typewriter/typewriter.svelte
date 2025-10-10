@@ -2,7 +2,6 @@
 	/* eslint-disable svelte/no-navigation-without-resolve */
 	import { onMount, tick } from 'svelte';
 	import type { Message, MessageLine, MessageLineChunk } from './typewriter';
-	import MainNav from '../navigation/main-nav.svelte';
 
 	let baseElement: HTMLDivElement | undefined = undefined;
 	let cloneElement: HTMLDivElement | undefined = undefined;
@@ -36,7 +35,7 @@
 	let {
 		message,
 		pregrow = false,
-		baseStyle = 'display: flex; flex-direction: column; white-space: pre-line; padding-top: .25rem; padding-bottom: .25rem;',
+		baseStyle = 'display: flex; flex-direction: column; white-space: pre-line;',
 		baseClass = '',
 		defaultLineDelayMs = 100,
 		defaultChunkDelayMs = 50,
