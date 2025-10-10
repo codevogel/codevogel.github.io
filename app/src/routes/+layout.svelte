@@ -3,7 +3,9 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Header from '$lib/components/ui/header.svelte';
+	import Footer from '$lib/components/ui/footer.svelte';
 	import Main from '$lib/components/ui/main.svelte';
+	import ContentScrollContainer from '$lib/components/ui/content-scroll-container.svelte';
 	let { children } = $props();
 </script>
 
@@ -12,4 +14,7 @@
 </svelte:head>
 
 <Header />
-<Main {children} />
+<ContentScrollContainer>
+	<Main {children} />
+	<Footer />
+</ContentScrollContainer>

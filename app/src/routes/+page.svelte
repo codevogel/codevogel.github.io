@@ -9,8 +9,5 @@
 <div>
 	<NameBreakdown />
 </div>
-<div>
-	<NameBreakdown />
-</div>
 
 
