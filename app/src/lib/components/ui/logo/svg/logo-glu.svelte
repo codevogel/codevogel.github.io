@@ -1,19 +1,7 @@
-<script>
-	let { scale = 1, className = '', baseClass = 'fill-foreground' } = $props();
-
-	const baseWidth = 220;
-	const baseHeight = 100;
-
-	let width = $derived(baseWidth * scale);
-	let height = $derived(baseHeight * scale);
-</script>
-
 <svg
-	{width}
-	{height}
 	viewBox="0 -0.24594842183103083 1038.5876907781392 470.24594842183103"
 	xmlns="http://www.w3.org/2000/svg"
-	class="{baseClass} {className}"
+	class="fg"
 >
 	<g id="Logo" >
 		<path d="m457.25 150.64v5.47c0 17.88-16.19 27.79-36.56 27.79-20.62 0-37.53-9.27-37.53-28.59 0-18.2 15.62-29.4 36.96-29.4 17.72 0 33.26 6.61 35.52 19.65h-15.7c-2.5-4.91-9.51-7.16-19.33-7.16-12.57 0-21.99 5.87-21.99 16.99 0 12.16 10.31 16.43 21.91 16.43 10.06 0 19.32-3.31 20.77-10.63h-21.82v-10.55z"/>

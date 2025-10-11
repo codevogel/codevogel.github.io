@@ -1,18 +1,8 @@
-<script>
-  let { scale = 1, fill = "#fff" } = $props();
-
-  const baseSize = 100;
-
-  let width = $derived(baseSize * scale);
-  let height = $derived(baseSize * scale);
-</script>
-
 <svg
-  {width}
-  {height}
   viewBox="0 0 382 382"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
+ class="fg"
 >
   <path
     d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
@@ -24,6 +14,5 @@
 	c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
 	c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
 	L341.91,330.654L341.91,330.654z"
-    {fill}
   />
 </svg>
