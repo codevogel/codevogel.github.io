@@ -104,6 +104,7 @@
   --height-page-without-header: calc(var(--height-page) - var(--height-header));
   --height-page-without-footer: calc(var(--height-page) - var(--height-footer));
   --height-page-without-header-and-footer: calc(var(--height-page) - var(--height-footer) - var(--height-header));
+  --text-xxs: 0.625rem; 
 }
 
 @theme inline {

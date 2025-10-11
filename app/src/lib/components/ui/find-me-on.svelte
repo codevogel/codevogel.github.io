@@ -13,5 +13,5 @@
 		<a href="https://github.com/codevogel/"><LogoGithub scale={.5}/></a>
 		<a href="https://www.linkedin.com/in/kamiel-de-visser/"><LogoLinkedin scale={.5}/></a>
 		<a href="https://www.youtube.com/@codevogel_yt"><LogoYoutube scale={.5}/></a>
-	</div>
+		</div>
 </div>
