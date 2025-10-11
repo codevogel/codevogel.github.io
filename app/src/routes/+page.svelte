@@ -10,10 +10,8 @@
 </div>
 <div class="gap-y-8">
 	<NameBreakdown />
-	<FindMeOn/>
+	<FindMeOn />
 </div>
 <div>
 	<WorkExperience />
-	</div>
-
-
+</div>
