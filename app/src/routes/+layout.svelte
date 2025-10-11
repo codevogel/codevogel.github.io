@@ -15,6 +15,8 @@
 
 <Header />
 <ContentScrollContainer>
-	<Main {children} />
+	<Main>
+		{@render children?.()}
+	</Main>
 	<Footer />
 </ContentScrollContainer>
