@@ -11,9 +11,10 @@
 			{
 				chunks: [
 					{ text: 'My name is ' },
-					{ text: 'codevogel', class: 'font-bold text-primary' },
+					{ text: 'codevogel', class: 'font-bold text-background bg-primary p-2 rounded-xl mx-2' },
 					{ text: '.' }
-				]
+				],
+				class: 'my-2'
 			},
 			{
 				chunks: [
@@ -33,14 +34,15 @@
 					{ text: '.' }
 				]
 			}
-		]
+		],
+		class: 'text-lg'
 	};
 </script>
 
-<div class="grid h-72 grid-cols-1 place-content-end justify-items-center">
+<div class="grid h-72 grid-cols-1 place-content-end justify-items-center px-8">
 	<Typewriter
 		{message}
-		baseClass="max-w-[28ch] w-[28ch] bg-accent rounded-lg p-4"
+		baseClass="max-w-[25ch] w-[25ch] bg-accent rounded-lg p-4"
 		pregrow={false}
 	/>
 	<div
