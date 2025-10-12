@@ -8,15 +8,15 @@
 	const logoScale = 0.3;
 </script>
 
-<div class="inline-flex h-16 items-center gap-x-4 text-start text-xs">
+<div class="inline-flex h-16 items-center gap-x-4 text-start text-xs mx-4 px-4 py-10 rounded-xl ">
 	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a href={job.href}>
 		<SvgLogo scale={logoScale}>
 			<job.logo />
 		</SvgLogo>
 	</a>
-	<div class="hover:[&>:first-child]:hidden hover:[&>:nth-child(2)]:hidden hover:[&>:last-child]:block flex flex-row">
-		<div class="flex flex-col gap-y-1 w-36">
+	<div class="hover:[&>:first-child]:hidden hover:[&>:nth-child(2)]:hidden hover:[&>:last-child]:block flex flex-row w-full ">
+		<div class="flex flex-col gap-y-1 grow">
 			<span class="font-bold whitespace-pre-line text-primary">{job.position}</span>
 			<span class="flex flex-row items-end"
 				><MapPin size={14} class="stroke-primary" /> {job.location}</span

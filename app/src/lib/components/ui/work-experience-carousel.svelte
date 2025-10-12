@@ -4,6 +4,16 @@
 	import type { Job } from './job';
 	import LogoSuperprof from './logo/svg/logo-superprof.svelte';
 	import LogoGluSquare from './logo/svg/logo-glu-square.svelte';
+	import LogoRanj from './logo/svg/logo-ranj.svelte';
+	import LogoUVA from './logo/svg/logo-uva.svelte';
+	import LogoDegoma from './logo/svg/logo-degoma.svelte';
+	import { type CarouselAPI } from '$lib/components/shadcn-svelte/ui/carousel/context';
+	import Button from '../shadcn-svelte/ui/button/button.svelte';
+
+	let api = $state<CarouselAPI>();
+	let viewingCurrent = $state(true);
+
+	let carouselButtonText = $derived(viewingCurrent ? 'View Past Jobs' : 'View Current Jobs');
 
 	const jobs: Job[] = [
 		{
@@ -27,33 +37,80 @@
 				'I provide personalized tutoring in game development to students of various ages and educational levels.',
 			href: 'https://www.super-prof.nl/s/programmeren,Amsterdam,52.3675734,4.9041389,1,1018954.html',
 			logo: LogoSuperprof
+		},
+		{
+			company: '&Ranj',
+			position: 'Thesis Intern: AI generated\ndialogue for serious games',
+			location: 'Rotterdam, NL',
+			startDate: new Date('2023-09-01'),
+			endDate: new Date('2024-02-01'),
+			description:
+				'Performed a study on how game designers can use large-language models to provide meaningful conversation in serious games, and built a proof-of-concept game',
+			href: 'https://www.ranj.com/',
+			logo: LogoRanj
+		},
+		{
+			company: 'University of Amsterdam',
+			position: 'Teaching Assistant: Minor Programming',
+			location: 'Amsterdam, NL',
+			startDate: new Date('2022-09-01'),
+			endDate: new Date('2024-01-01'),
+			description:
+				'Assistant tutor of the Minor Programming at the University of Amsterdam. Organised and supervised a learning route for Game Development in Unity, and taught programming in C, C# & Python.',
+			href: 'https://www.uva.nl/',
+			logo: LogoUVA
+		},
+		{
+			company: 'Degoma',
+			position: 'Intern game design,\ndevelopment, and porting',
+			location: 'Amsterdam, NL',
+			startDate: new Date('2021-09-01'),
+			endDate: new Date('2022-02-01'),
+			description:
+				'Worked on content for ‘Reggie, his cousin, two scientists and most likely the end of the world’. Designing and implementing game mechanics for a boss, and studying how the IP should be ported to a mobile game.',
+			href: 'https://degoma.games/',
+			logo: LogoDegoma
 		}
 	];
 
-	const currentJobs = $derived(jobs.filter((job) => job.endDate === 'Present'));
+	const currentJobs = $derived(
+		jobs
+			.filter((job) => job.endDate === 'Present')
+			.sort((a, b) => b.startDate.getTime() - a.startDate.getTime())
+	);
+	const pastJobs = $derived(
+		jobs
+			.filter((job) => job.endDate !== 'Present')
+			.sort((a, b) => b.startDate.getTime() - a.startDate.getTime())
+	);
 </script>
 
-<div class="not-prose px-14">
-	<Carousel.Root>
+<div class="not-prose">
+	<Carousel.Root opts={{ loop: true }} setApi={(emblaAPI) => (api = emblaAPI)}>
 		<Carousel.Content>
-			<Carousel.Item class="">
+			<Carousel.Item class="flex flex-col justify-start gap-y-2">
 				<h4>Current Jobs</h4>
-				<div class="flex flex-col gap-y-4">
+				<div class="flex flex-col gap-y-2">
 					{#each currentJobs as job, i (i)}
 						<JobCard {job} />
 					{/each}
 				</div>
 			</Carousel.Item>
-			<Carousel.Item class="">
+			<Carousel.Item class="flex flex-col justify-center gap-y-2">
 				<h4>Past Jobs</h4>
-				<div class="flex flex-col gap-y-4">
-					{#each currentJobs as job, i (i)}
+				<div class="flex flex-col gap-y-2">
+					{#each pastJobs as job, i (i)}
 						<JobCard {job} />
 					{/each}
 				</div>
 			</Carousel.Item>
 		</Carousel.Content>
-		<Carousel.Previous />
-		<Carousel.Next />
 	</Carousel.Root>
+	<Button
+		onclick={() => {
+			api?.scrollNext();
+			viewingCurrent = !viewingCurrent;
+		}}
+		variant="outline" class="mt-2">{carouselButtonText}</Button
+	>
 </div>
