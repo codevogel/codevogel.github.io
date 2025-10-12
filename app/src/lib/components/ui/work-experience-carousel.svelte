@@ -62,7 +62,7 @@
 		},
 		{
 			company: 'Degoma',
-			position: 'Intern game design,\ndevelopment, and porting',
+			position: 'Intern game design, development, and porting',
 			location: 'Amsterdam, NL',
 			startDate: new Date('2021-09-01'),
 			endDate: new Date('2022-02-01'),
