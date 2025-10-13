@@ -1,6 +1,7 @@
-import { skills } from "$lib/server/data/skills";
-import type { PageServerLoad } from "./$types";
+import { skillGroups } from '$lib/server/data/skills';
+import { jobs } from '$lib/server/data/jobs';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-	return { skills };
-}
+	return { skillGroups, jobs };
+};

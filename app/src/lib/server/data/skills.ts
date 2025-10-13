@@ -1,15 +1,15 @@
-type SkillItem = {
+type Skill = {
 	name: string;
 	href: string;
 	logoPath: string;
 };
 
-type SkillGroup = {
+export type SkillGroup = {
 	name: string;
-	items: SkillItem[];
+	items: Skill[];
 };
 
-export const skills: SkillGroup[] = [
+export const skillGroups: SkillGroup[] = [
 	{
 		name: 'Game Engines',
 		items: [

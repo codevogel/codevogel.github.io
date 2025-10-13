@@ -6,7 +6,8 @@
 	import WorkExperience from '$lib/components/ui/work-experience.svelte';
 
 	let { data } = $props();
-	const skills = $derived(data.skills); 
+	const skillGroups = $derived(data.skillGroups);
+	const jobs = $derived(data.jobs);
 </script>
 
 <div>
@@ -17,8 +18,8 @@
 	<FindMeOn />
 </div>
 <div>
-	<WorkExperience />
+	<WorkExperience {jobs} />
 </div>
 <div>
-	<Skills {skills}/>
+	<Skills {skillGroups} />
 </div>
