@@ -4,6 +4,9 @@
 	import NameBreakdown from '$lib/components/ui/hero/name-breakdown.svelte';
 	import Skills from '$lib/components/ui/skills.svelte';
 	import WorkExperience from '$lib/components/ui/work-experience.svelte';
+
+	let { data } = $props();
+	const skills = $derived(data.skills); 
 </script>
 
 <div>
@@ -17,5 +20,5 @@
 	<WorkExperience />
 </div>
 <div>
-	<Skills />
+	<Skills {skills}/>
 </div>

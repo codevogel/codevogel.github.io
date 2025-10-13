@@ -2,11 +2,6 @@
 	import * as Carousel from '$lib/components/shadcn-svelte/ui/carousel/index.js';
 	import JobCard from './job-card.svelte';
 	import type { Job } from './job';
-	import LogoSuperprof from './logo/svg/logo-superprof.svelte';
-	import LogoGluSquare from './logo/svg/logo-glu-square.svelte';
-	import LogoRanj from './logo/svg/logo-ranj.svelte';
-	import LogoUVA from './logo/svg/logo-uva.svelte';
-	import LogoDegoma from './logo/svg/logo-degoma.svelte';
 	import { type CarouselAPI } from '$lib/components/shadcn-svelte/ui/carousel/context';
 	import Button from '../shadcn-svelte/ui/button/button.svelte';
 
@@ -25,7 +20,7 @@
 			description:
 				'I develop and teach a curriculum in creative software development, emphasizing Game, XR, and Web technologies used in modern studios.',
 			href: 'https://www.glu.nl/',
-			logo: LogoGluSquare
+			logoPath: '/logos/svg/logo-glu-square.svg',
 		},
 		{
 			company: 'Superprof',
@@ -36,7 +31,7 @@
 			description:
 				'I provide personalized tutoring in game development to students of various ages and educational levels.',
 			href: 'https://www.super-prof.nl/s/programmeren,Amsterdam,52.3675734,4.9041389,1,1018954.html',
-			logo: LogoSuperprof
+			logoPath: '/logos/svg/logo-superprof.svg',
 		},
 		{
 			company: '&Ranj',
@@ -47,7 +42,7 @@
 			description:
 				'Performed a study on how game designers can use large-language models to provide meaningful conversation in serious games, and built a proof-of-concept game',
 			href: 'https://www.ranj.com/',
-			logo: LogoRanj
+			logoPath: '/logos/svg/logo-ranj.svg'
 		},
 		{
 			company: 'University of Amsterdam',
@@ -58,7 +53,7 @@
 			description:
 				'Assistant tutor of the Minor Programming at the University of Amsterdam. Organised and supervised a learning route for Game Development in Unity, and taught programming in C, C# & Python.',
 			href: 'https://www.uva.nl/',
-			logo: LogoUVA
+			logoPath: '/logos/svg/logo-uva.svg'
 		},
 		{
 			company: 'Degoma',
@@ -69,7 +64,7 @@
 			description:
 				'Worked on content for ‘Reggie, his cousin, two scientists and most likely the end of the world’. Designing and implementing game mechanics for a boss, and studying how the IP should be ported to a mobile game.',
 			href: 'https://degoma.games/',
-			logo: LogoDegoma
+			logoPath: '/logos/svg/logo-degoma.svg'
 		}
 	];
 

@@ -1,27 +1,20 @@
 <script lang="ts">
-	import LogoLinkedin from './logo/svg/logo-linkedin.svelte';
-	import SvgLogo from './logo/svg-logo.svelte';
-	import LogoGithub from './logo/svg/logo-github.svelte';
-	import LogoYoutube from './logo/svg/logo-youtube.svelte';
+	import ClipSvg from './logo/clip-svg.svelte';
+
+	let logoScale = .5;
 </script>
 
-<div class="prose text-center dark:prose-invert">
-	<h3>Find me on</h3>
+<div class="text-center flex flex-col gap-y-4">
+	<h3 class="text-xl">Find me on</h3>
 	<div class="flex flex-row justify-center gap-x-8">
 		<a href="https://github.com/codevogel/">
-			<SvgLogo scale={0.5}>
-				<LogoGithub />
-			</SvgLogo>
-		</a>
-		<a href="https://www.linkedin.com/in/kamiel-de-visser/">
-			<SvgLogo scale={0.5}>
-				<LogoLinkedin />
-			</SvgLogo>
+			<ClipSvg path="/logos/svg/logo-github.svg" scale={logoScale}/>
 		</a>
 		<a href="https://www.youtube.com/@codevogel_yt">
-			<SvgLogo scale={0.5}>
-				<LogoYoutube />
-			</SvgLogo>
+			<ClipSvg path="/logos/svg/logo-youtube.svg" scale={logoScale}/>
+		</a>
+		<a href="https://www.linkedin.com/in/kamiel-de-visser/">
+			<ClipSvg path="/logos/svg/logo-linkedin.svg" scale={logoScale}/>
 		</a>
 	</div>
 </div>

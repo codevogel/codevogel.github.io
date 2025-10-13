@@ -1,20 +1,13 @@
 <script lang="ts">
-	import SvgLogo from './svg-logo.svelte';
-	import LogoCodevogelText from './svg/logo-codevogel-text.svelte';
+	import { resolve } from "$app/paths";
 
-	let logoWrapper: HTMLDivElement;
-
-	let logoHover = $state(false);
+	let url = resolve('/')
 </script>
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<div
-	class="mx-auto max-h-24"
-	bind:this={logoWrapper}
-	onmouseenter={() => (logoHover = true)}
-	onmouseleave={() => (logoHover = false)}
->
-	<SvgLogo scale={logoHover ? 1.05 : 1} baseWidth={300}>
-		<LogoCodevogelText />
-	</SvgLogo>
-</div>
+<a class="min-h-24" href={url}>
+	<img
+		src="/logos/svg/logo-codevogel-text.svg"
+		class="mx-auto mt-4 w-80 hover:w-84 transition-all"
+		alt="codevogel logo head"
+	/>
+</a>

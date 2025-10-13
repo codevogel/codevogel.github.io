@@ -48,5 +48,5 @@
 	<div
 		class="h-0 w-0 border-t-[15px] border-r-[15px] border-l-[15px] border-accent border-r-transparent border-l-transparent"
 	></div>
-	<img src="logos/logo-codevogel-head.svg" class="mt-4 w-24" alt="codevogel logo head" />
+	<img src="/logos/svg/logo-codevogel-head.svg" class="mt-4 w-24" alt="codevogel logo head" />
 </div>

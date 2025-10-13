@@ -1,5 +1,3 @@
-import type { Component } from "svelte";
-
 export type Job = {
 		company: string;
 		position: string;
@@ -8,5 +6,5 @@ export type Job = {
 		endDate: Date | 'Present';
 		description: string;
 		href: string;
-		logo: Component;
+		logoPath: string;
 	};
