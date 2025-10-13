@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { MapPin } from 'lucide-svelte';
-	import type { Job } from './job';
 	import ClipSvg from './logo/clip-svg.svelte';
+	import type { Job } from '$lib/server/data/jobs';
 
 	let { job }: { job: Job } = $props();
 
