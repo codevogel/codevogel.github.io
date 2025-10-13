@@ -1,4 +1,4 @@
-import { skills } from "$lib/server/data/skills/skills";
+import { skills } from "$lib/server/data/skills";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
