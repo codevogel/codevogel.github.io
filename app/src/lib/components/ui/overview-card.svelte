@@ -7,7 +7,7 @@
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 <a
 	href={href}
-	class="no-underline [&:hover_.hover-altered]:text-primary [&>:first-child:hover]:border-foreground/20"
+	class="no-underline [&:hover_.hover-altered]:text-primary [&>:first-child:hover]:border-foreground/20 flex"
 >
 	<Card.Root class="py-1 gap-y-0">
 		<Card.Header>
