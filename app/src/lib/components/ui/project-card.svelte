@@ -16,7 +16,7 @@
 >
 	<Card.Root>
 		<Card.Header>
-			<Card.Title class="text-xl hover-altered">{project.title}</Card.Title>
+			<Card.Title class="text-xl hover-altered">{project.title}{project.wip ? " [WIP]" : ""}</Card.Title>
 		</Card.Header>
 		<Card.Content class="flex flex-col gap-y-4 px-0">
 			{#if project.youtubeURL}
@@ -24,7 +24,7 @@
 				<YoutubeEmbed youtubeURL={project.youtubeURL} />
 			{:else}
 				<img
-					src={`/projects/${project.slug}/${project.slug}.png`}
+					src={`/projects/${project.slug}/${project.slug}${project.hasGif ? '.gif' : '.png'}`}
 					alt={`Screenshot of ${project.title}`}
 				/>
 			{/if}

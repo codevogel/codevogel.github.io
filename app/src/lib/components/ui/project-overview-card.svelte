@@ -16,9 +16,9 @@
 >
 	<Card.Root class="py-2 gap-0">
 		<Card.Header>
-			<Card.Title class="hover-altered text-xs">{project.title}</Card.Title>
+			<Card.Title class="hover-altered font-extrabold text-[.74rem]">{project.title}{project.wip ? " [WIP]" : ""}</Card.Title>
 		</Card.Header>
-		<Card.Content class="flex flex-col gap-y-4 px-0 text-xxs">
+		<Card.Content class="flex flex-col gap-y-4 px-0 text-[.625rem] text-foreground/50">
 			{project.shortDescription}
 		</Card.Content>
 	</Card.Root>
