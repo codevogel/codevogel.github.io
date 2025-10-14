@@ -11,8 +11,8 @@
 			{
 				chunks: [
 					{ text: 'My name is ' },
-					{ text: 'codevogel', class: 'font-bold text-background bg-primary p-2 rounded-xl mx-2' },
-					{ text: '.' }
+					{ text: 'codevogel', class: 'font-extrabold text-background bg-primary px-2 py-1 rounded-xl' },
+					{ text: ' .' }
 				],
 				class: 'my-2'
 			},
