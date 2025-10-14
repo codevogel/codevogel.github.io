@@ -27,9 +27,9 @@
 	});
 </script>
 
-<div class="prose min-h-full px-6 text-center dark:prose-invert prose-headings:my-0">
-	<h1>Project overview</h1>
-	<p class="text-sm text-foreground/50">
+<div class="min-h-full px-6 text-center">
+	<h1 class="text-2xl font-extrabold mb-2">Project overview</h1>
+	<p class="text-sm text-foreground/50 mb-4">
 		Click a project in the overview to jump to that project, or swipe down to scroll through them.
 	</p>
 	<div class="not-prose grid grid-cols-2 gap-x-4 gap-y-2">

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Card from '$lib/components/shadcn-svelte/ui/card/index.js';
 	import type { Project } from '$lib/server/data/projects';
+	import OverviewCard from '$lib/components/ui/overview-card.svelte';
 
 	import { page } from '$app/state';
 
@@ -9,17 +9,9 @@
 	let url = $derived(page.url.pathname + '#' + project.slug);
 </script>
 
-<!-- eslint-disable svelte/no-navigation-without-resolve -->
-<a
+<OverviewCard
 	href={url}
-	class="no-underline [&:hover_.hover-altered]:text-primary [&>:first-child:hover]:border-foreground/20"
->
-	<Card.Root class="py-2 gap-0">
-		<Card.Header>
-			<Card.Title class="hover-altered font-extrabold text-[.74rem]">{project.title}{project.wip ? " [WIP]" : ""}</Card.Title>
-		</Card.Header>
-		<Card.Content class="flex flex-col gap-y-4 px-0 text-[.625rem] text-foreground/50">
-			{project.shortDescription}
-		</Card.Content>
-	</Card.Root>
-</a>
+	title={project.title}
+	shortDescription={project.shortDescription}
+	wip={project.wip}
+/>
