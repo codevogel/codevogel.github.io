@@ -42,7 +42,7 @@
 <div class="grid h-72 grid-cols-1 place-content-end justify-items-center px-8">
 	<Typewriter
 		{message}
-		baseClass="max-w-[25ch] w-[25ch] bg-accent rounded-lg p-4"
+		baseClass="max-w-72 min-w-72 bg-accent rounded-lg p-4"
 		pregrow={false}
 	/>
 	<div
