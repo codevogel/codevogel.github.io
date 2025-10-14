@@ -6,12 +6,15 @@
 	import Footer from '$lib/components/ui/footer.svelte';
 	import Main from '$lib/components/ui/main.svelte';
 	import ContentScrollContainer from '$lib/components/ui/content-scroll-container.svelte';
+	import { Toaster } from '$lib/components/shadcn-svelte/ui/sonner';
 	let { children } = $props();
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
+
+<Toaster/>
 
 <Header />
 <ContentScrollContainer>
