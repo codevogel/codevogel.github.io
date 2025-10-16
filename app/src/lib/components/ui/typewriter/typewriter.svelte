@@ -174,7 +174,8 @@
 			<span class={line.class ?? ''} style={line.style ?? ''}>
 				{#each line.chunks as chunk (chunk)}
 					{#if chunk.href != null}
-						<a href={chunk.href} class={chunk.class ?? ''} style={chunk.style ?? ''}>{chunk.text}</a
+						<a href={chunk.href} class={chunk.class ?? ''} style={chunk.style ?? ''}
+							>{chunk.text}</a
 						>
 					{:else}
 						<span class={chunk.class ?? ''} style={chunk.style ?? ''}>{chunk.text}</span>
@@ -194,7 +195,8 @@
 			<span class={line.class ?? ''} style={line.style ?? ''}>
 				{#each line.chunks as chunk (chunk)}
 					{#if chunk.href != null}
-						<a href={chunk.href} class={chunk.class ?? ''} style={chunk.style ?? ''}>{chunk.text}</a
+						<a href={chunk.href} class={chunk.class ?? ''} style={chunk.style ?? ''}
+							>{chunk.text}</a
 						>
 					{:else}
 						<span class={chunk.class ?? ''} style={chunk.style ?? ''}>{chunk.text}</span>

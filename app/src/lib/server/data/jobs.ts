@@ -1,13 +1,13 @@
 export type Job = {
-		company: string;
-		position: string;
-		location: string;
-		startDate: Date;
-		endDate: Date | 'Present';
-		description: string;
-		href: string;
-		logoPath: string;
-	};
+	company: string;
+	position: string;
+	location: string;
+	startDate: Date;
+	endDate: Date | 'Present';
+	description: string;
+	href: string;
+	logoPath: string;
+};
 
 export const jobs: Job[] = [
 	{
@@ -19,7 +19,7 @@ export const jobs: Job[] = [
 		description:
 			'I develop and teach a curriculum in creative software development, emphasizing Game, XR, and Web technologies used in modern studios.',
 		href: 'https://www.glu.nl/',
-		logoPath: '/logos/svg/logo-glu-square.svg',
+		logoPath: '/logos/svg/logo-glu-square.svg'
 	},
 	{
 		company: 'Superprof',
@@ -30,7 +30,7 @@ export const jobs: Job[] = [
 		description:
 			'I provide personalized tutoring in game development to students of various ages and educational levels.',
 		href: 'https://www.super-prof.nl/s/programmeren,Amsterdam,52.3675734,4.9041389,1,1018954.html',
-		logoPath: '/logos/svg/logo-superprof.svg',
+		logoPath: '/logos/svg/logo-superprof.svg'
 	},
 	{
 		company: '&Ranj',
@@ -66,4 +66,3 @@ export const jobs: Job[] = [
 		logoPath: '/logos/svg/logo-degoma.svg'
 	}
 ];
-

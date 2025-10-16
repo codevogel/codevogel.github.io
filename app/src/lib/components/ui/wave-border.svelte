@@ -24,7 +24,7 @@
 		return () => clearInterval(interval);
 	});
 
-	let { flipY = false, className = "" } = $props();
+	let { flipY = false, className = '' } = $props();
 </script>
 
 <svg

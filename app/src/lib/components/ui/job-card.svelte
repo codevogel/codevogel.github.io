@@ -4,16 +4,17 @@
 	import type { Job } from '$lib/server/data/jobs';
 
 	let { job }: { job: Job } = $props();
-
 </script>
 
-<div class="inline-flex h-16 items-center gap-x-4 text-start text-xs mx-4 px-4 py-10 rounded-xl ">
+<div class="mx-4 inline-flex h-16 items-center gap-x-4 rounded-xl px-4 py-10 text-start text-xs">
 	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a href={job.href}>
-		<ClipSvg path={job.logoPath} scale={.5} />
+		<ClipSvg path={job.logoPath} scale={0.5} />
 	</a>
-	<div class="hover:[&>:first-child]:hidden hover:[&>:nth-child(2)]:hidden hover:[&>:last-child]:block flex flex-row w-full ">
-		<div class="flex flex-col gap-y-1 grow">
+	<div
+		class="flex w-full flex-row hover:[&>:first-child]:hidden hover:[&>:last-child]:block hover:[&>:nth-child(2)]:hidden"
+	>
+		<div class="flex grow flex-col gap-y-1">
 			<span class="font-bold whitespace-pre-line text-primary">{job.position}</span>
 			<span class="flex flex-row items-end"
 				><MapPin size={14} class="stroke-primary" /> {job.location}</span

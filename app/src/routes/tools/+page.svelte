@@ -28,8 +28,8 @@
 </script>
 
 <div class="min-h-full px-6 text-center">
-	<h1 class="text-2xl font-extrabold mb-2">Tool overview</h1>
-	<p class="text-sm text-foreground/50 mb-4">
+	<h1 class="mb-2 text-2xl font-extrabold">Tool overview</h1>
+	<p class="mb-4 text-sm text-foreground/50">
 		Click a tool in the overview to jump to that project, or swipe down to scroll through them.
 	</p>
 	<div class="not-prose grid grid-cols-2 gap-x-4 gap-y-2">

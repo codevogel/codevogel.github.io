@@ -4,7 +4,7 @@
 </script>
 
 <nav class="flex flex-row justify-center">
-	<main class="grid grid-cols-4 justify-between max-w-sm">
+	<main class="grid max-w-sm grid-cols-4 justify-between">
 		{#each pages as page (page.path)}
 			<Button variant="nav" href={page.path}>{page.name}</Button>
 		{/each}

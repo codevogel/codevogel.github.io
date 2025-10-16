@@ -50,6 +50,7 @@
 			api?.scrollNext();
 			viewingCurrent = !viewingCurrent;
 		}}
-		variant="outline" class="mt-2">{carouselButtonText}</Button
+		variant="outline"
+		class="mt-2">{carouselButtonText}</Button
 	>
 </div>

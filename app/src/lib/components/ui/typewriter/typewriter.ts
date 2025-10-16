@@ -9,7 +9,7 @@ export type MessageLine = {
 	delay?: number;
 	class?: string;
 	style?: string;
-}
+};
 
 export type MessageLineChunk = {
 	text: string;
@@ -17,4 +17,4 @@ export type MessageLineChunk = {
 	class?: string;
 	style?: string;
 	href?: string;
-}
+};

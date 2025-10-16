@@ -14,7 +14,7 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<Toaster/>
+<Toaster />
 
 <Header />
 <ContentScrollContainer>

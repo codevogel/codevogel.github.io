@@ -28,12 +28,12 @@
 		<br />Looking forward to your message!
 	</p>
 	<p>
-		<span class="font-bold text-primary italic">Are you a recruiter?</span><br />Then swipe down to
-		see my resume 😉
+		<span class="font-bold text-primary italic">Are you a recruiter?</span><br />Then swipe down
+		to see my resume 😉
 	</p>
 </div>
 
-<div class="gap-y-8 flex flex-col justify-center items-center">
+<div class="flex flex-col items-center justify-center gap-y-8">
 	<FindMeOn />
 	<h1 class="text-xl">My Resume</h1>
 	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->

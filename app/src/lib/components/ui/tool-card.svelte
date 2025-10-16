@@ -12,15 +12,16 @@
 
 <a
 	href={toolURL}
-	class="no-underline [&:hover_.hover-altered]:text-primary [&>:first-child:hover]:border-foreground/20 px-6"
+	class="px-6 no-underline [&:hover_.hover-altered]:text-primary [&>:first-child:hover]:border-foreground/20"
 >
 	<Card.Root>
 		<Card.Header>
-			<Card.Title class="text-xl hover-altered">{tool.title}{tool.wip ? " [WIP]" : ""}</Card.Title>
+			<Card.Title class="hover-altered text-xl"
+				>{tool.title}{tool.wip ? ' [WIP]' : ''}</Card.Title
+			>
 		</Card.Header>
 		<Card.Content class="flex flex-col gap-y-4 px-0">
 			{#if tool.youtubeURL}
-
 				<YoutubeEmbed youtubeURL={tool.youtubeURL} />
 			{:else}
 				<img

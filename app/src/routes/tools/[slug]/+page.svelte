@@ -28,6 +28,6 @@
 	const plugins: Plugin[] = [gfmPlugin(), { rehypePlugin: [rehypeRaw] }, shikiPlugin];
 </script>
 
-<div class="mx-8 prose dark:prose-invert snap-none">
+<div class="mx-8 prose snap-none dark:prose-invert">
 	<Markdown md={readme} {plugins} />
 </div>
