@@ -6,6 +6,7 @@ export type Tool = {
 	hasGif?: boolean;
 	wip?: boolean;
 	youtubeURL?: string;
+	readmeURL?: string;
 };
 
 export const tools: Tool[] = [
@@ -14,7 +15,8 @@ export const tools: Tool[] = [
 		shortDescription: 'A plugin that helps you validate your scenes in Godot.',
 		description:
 			'A powerful validation plugin for Godot that catches errors before they reach runtime. Validate scenes, nodes, and resources using a declarative, test-driven approach. No @tool required!',
-		slug: 'godot-doctor'
+		slug: 'godot-doctor',
+		readmeURL: 'https://raw.githubusercontent.com/codevogel/godot_doctor/refs/heads/main/README.md'
 	},
 	{
 		title: 'Perspective Shader',

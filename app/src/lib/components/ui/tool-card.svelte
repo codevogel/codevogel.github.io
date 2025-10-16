@@ -7,7 +7,7 @@
 
 	let { tool }: { tool: Tool } = $props();
 
-	let toolURL = resolve(`/projects/${tool.slug}`);
+	let toolURL = resolve(`/tools/${tool.slug}`);
 </script>
 
 <a
