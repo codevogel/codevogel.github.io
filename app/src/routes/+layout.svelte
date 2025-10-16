@@ -2,12 +2,35 @@
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import { Toaster } from '$lib/components/shadcn-svelte/ui/sonner';
+	import * as Carousel from '$lib/components/shadcn-svelte/ui/carousel/index.js';
+	import Button from '$lib/components/shadcn-svelte/ui/button/button.svelte';
+
+	let { children } = $props();
+
+	import type { CarouselAPI } from '$lib/components/shadcn-svelte/ui/carousel/context';
+	import { onMount } from 'svelte';
 	import Header from '$lib/components/ui/header.svelte';
 	import Footer from '$lib/components/ui/footer.svelte';
-	import Main from '$lib/components/ui/main.svelte';
-	import ContentScrollContainer from '$lib/components/ui/content-scroll-container.svelte';
-	import { Toaster } from '$lib/components/shadcn-svelte/ui/sonner';
-	let { children } = $props();
+
+	let api = $state<CarouselAPI>();
+
+	onMount(() => {
+		const firstSection = document.querySelector('main > :first-child');
+		const viewportHeight = window.innerHeight;
+		const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+		const availableHeight = viewportHeight - headerHeight;
+
+		console.log(
+			firstSection?.offsetHeight > availableHeight,
+			firstSection?.offsetHeight,
+			availableHeight
+		);
+
+		if (firstSection && firstSection.offsetHeight > availableHeight) {
+			firstSection.classList.add('overflowing');
+		}
+	});
 </script>
 
 <svelte:head>
@@ -16,10 +39,26 @@
 
 <Toaster />
 
-<Header />
-<ContentScrollContainer>
-	<Main>
+<!-- <div class="max-h-[100dvh] snap-y snap-mandatory overflow-y-scroll"> -->
+<!-- 	<header class="h-header snap-none bg-red-300"></header> -->
+<!-- 	<main -->
+<!-- 		class="[&>*]:min-h-page [&>*]:snap-start [&>:first-child]:snap-end [&>:first-child]:min-h-page-without-header [&>:last-child]:min-h-page-without-footer" -->
+<!-- 	> -->
+<!-- 		<section class="bg-red-500"></section> -->
+<!-- 		<section class="bg-red-600"></section> -->
+<!-- 		<section class="bg-red-700"></section> -->
+<!-- 	</main> -->
+<!-- 	<footer class="h-footer snap-end bg-red-400"></footer> -->
+<!-- </div> -->
+
+<div class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto">
+	<header class="h-header snap-start"><Header/></header>
+	<main
+		class="site-main [&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:first-child.overflowing]:snap-start [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start"
+	>
 		{@render children?.()}
-	</Main>
-	<Footer />
-</ContentScrollContainer>
+	</main>
+	<footer class="h-footer snap-end">
+		<Footer/>
+	</footer>
+</div>

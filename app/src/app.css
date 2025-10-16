@@ -98,6 +98,8 @@
 }
 
 @theme {
+	--padding-header: calc(var(--spacing) * 48);
+	--margin-header: calc(var(--spacing) * 48);
 	--height-page: calc(100dvh);
 	--height-header: calc(var(--spacing) * 48);
 	--height-footer: calc(var(--spacing) * 12);
