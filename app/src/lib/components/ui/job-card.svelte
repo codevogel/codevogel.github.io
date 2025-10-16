@@ -6,7 +6,7 @@
 	let { job }: { job: Job } = $props();
 </script>
 
-<div class="mx-4 inline-flex h-16 items-center gap-x-4 rounded-xl px-4 py-10 text-start text-xs">
+<div class="mx-4 inline-flex h-24 items-center gap-x-4 rounded-xl py-10 text-start text-xs">
 	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a href={job.href}>
 		<ClipSvg path={job.logoPath} scale={0.5} />

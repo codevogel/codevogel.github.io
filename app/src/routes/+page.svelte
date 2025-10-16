@@ -10,16 +10,33 @@
 	const jobs = $derived(data.jobs);
 </script>
 
-<div>
+<section class="flex flex-col justify-center">
 	<BirdHero />
-</div>
-<div class="gap-y-8">
+</section>
+<section class="flex flex-col justify-center gap-y-24">
 	<NameBreakdown />
 	<FindMeOn />
-</div>
-<div>
+</section>
+<section class="flex flex-col justify-center p-4">
 	<WorkExperience {jobs} />
-</div>
-<div>
+</section>
+<section class="flex flex-col justify-center">
 	<Skills {skillGroups} />
-</div>
+</section>
+
+<style>
+	@reference "tailwindcss";
+
+	:global(h1) {
+		@apply text-3xl font-bold;
+	}
+
+	:global(h2) {
+		@apply text-xl font-semibold;
+	}
+
+	:global(.subscript) {
+		@apply text-sm italic;
+		color: color-mix(in oklab, var(--color-foreground) 40%, transparent);
+	}
+</style>

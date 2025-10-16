@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex flex-col items-center justify-center">
-	<h3 class="text-xl font-bold">Skills</h3>
+	<h1>Skills</h1>
 	{#each skillGroups as skill, i (i)}
 		<h4 class="text-md my-2 text-foreground/50">{skill.name}</h4>
 		<div class="flex max-w-60 flex-wrap justify-center gap-x-4 gap-y-2">

@@ -34,7 +34,7 @@
 					{ text: 'projects', class: 'text-primary underline', href: '/projects' },
 					{ text: ' and ' },
 					{ text: 'tools', class: 'text-primary underline', href: '/tools' },
-					{ text: '.' }
+					{ text: '!' }
 				]
 			}
 		],
@@ -42,7 +42,7 @@
 	};
 </script>
 
-<div class="grid h-72 grid-cols-1 place-content-end justify-items-center px-8">
+<div class="grid h-80 grid-cols-1 place-content-end justify-items-center px-8">
 	<Typewriter {message} baseClass="max-w-72 min-w-72 bg-accent rounded-lg p-4" pregrow={false} />
 	<div
 		class="h-0 w-0 border-t-[15px] border-r-[15px] border-l-[15px] border-accent border-r-transparent border-l-transparent"

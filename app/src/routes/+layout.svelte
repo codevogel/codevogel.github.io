@@ -3,17 +3,13 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { Toaster } from '$lib/components/shadcn-svelte/ui/sonner';
-	import * as Carousel from '$lib/components/shadcn-svelte/ui/carousel/index.js';
-	import Button from '$lib/components/shadcn-svelte/ui/button/button.svelte';
 
 	let { children } = $props();
 
-	import type { CarouselAPI } from '$lib/components/shadcn-svelte/ui/carousel/context';
 	import { onMount } from 'svelte';
 	import Header from '$lib/components/ui/header.svelte';
 	import Footer from '$lib/components/ui/footer.svelte';
 
-	let api = $state<CarouselAPI>();
 
 	onMount(() => {
 		const firstSection = document.querySelector('main > :first-child');
@@ -54,7 +50,7 @@
 <div class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto">
 	<header class="h-header snap-start"><Header/></header>
 	<main
-		class="site-main [&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:first-child.overflowing]:snap-start [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start"
+		class="[&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:first-child.overflowing]:snap-start [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start"
 	>
 		{@render children?.()}
 	</main>

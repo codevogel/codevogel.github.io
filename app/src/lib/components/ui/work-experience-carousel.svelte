@@ -24,11 +24,11 @@
 	);
 </script>
 
-<div class="not-prose">
+<div class="flex flex-col justify-center text-center gap-y-8">
 	<Carousel.Root opts={{ loop: true }} setApi={(emblaAPI) => (api = emblaAPI)}>
 		<Carousel.Content>
 			<Carousel.Item class="flex flex-col justify-start gap-y-2">
-				<h4>Current Jobs</h4>
+				<h2>Current Jobs</h2>
 				<div class="flex flex-col gap-y-2">
 					{#each currentJobs as job, i (i)}
 						<JobCard {job} />
@@ -36,7 +36,7 @@
 				</div>
 			</Carousel.Item>
 			<Carousel.Item class="flex flex-col justify-center gap-y-2">
-				<h4>Past Jobs</h4>
+				<h2>Past Jobs</h2>
 				<div class="flex flex-col gap-y-2">
 					{#each pastJobs as job, i (i)}
 						<JobCard {job} />
@@ -51,6 +51,6 @@
 			viewingCurrent = !viewingCurrent;
 		}}
 		variant="outline"
-		class="mt-2">{carouselButtonText}</Button
+		class="mt-2 max-w-32 place-self-center">{carouselButtonText}</Button
 	>
 </div>

@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex flex-col gap-y-4 text-center">
-	<h3 class="text-xl">Find me on</h3>
+	<h1>Find me on</h1>
 	<div class="flex flex-row justify-center gap-x-8">
 		<a href="https://github.com/codevogel/">
 			<ClipSvg path="/logos/svg/logo-github.svg" scale={logoScale} />
