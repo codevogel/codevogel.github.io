@@ -1,8 +1,11 @@
+
+ <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { afterNavigate, goto } from '$app/navigation';
 	import ToolCard from '$lib/components/ui/tool-card.svelte';
 	import Button from '$lib/components/shadcn-svelte/ui/button/button.svelte';
+	import { resolve } from '$app/paths';
 
 	let { data } = $props();
 	const tools = $derived(data.tools);
@@ -12,7 +15,6 @@
 		if (!hash) return;
 		const el = document.getElementById(hash);
 		if (el) {
-			//TODO: smooth scroll	
 			el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	}
@@ -26,36 +28,9 @@
 	afterNavigate(() => {
 		scrollToHash();
 	});
-
-	function getSlugByIndex(index: number) {
-		if (index >= 0 && index < tools.length) return tools[index].slug;
-		throw new Error(`Slug index ${index} is out of range!`);
-	}
-
-	function getTextFromButtonType(type: 'prev' | 'next' | 'overview'): string {
-		switch (type) {
-			case 'prev':
-				return 'Previous';
-			case 'next':
-				return 'Next';
-			case 'overview':
-				return 'Back to Overview';
-		}
-	}
-
-	function getButtonDisabled(type: 'prev' | 'next' | 'overview', index: number): boolean {
-		switch (type) {
-			case 'prev':
-				return index === 0;
-			case 'next':
-				return index === tools.length - 1;
-			case 'overview':
-				return false;
-		}
-	}
 </script>
 
-<section class="flex flex-col px-6 pt-4 pb-64 text-center">
+<section class="flex flex-col px-6 py-4 text-center">
 	<h1 class="mb-2">Tool overview</h1>
 	<p class="subscript mb-4">
 		Click a tool in the overview to jump to that project, or swipe down to scroll through them.
@@ -84,38 +59,39 @@
 {#each tools as tool, i (i)}
 	<!-- Give each card a unique id based on its slug -->
 	<section id={tool.slug} class="relative flex flex-col justify-center gap-y-8">
-		<div class="absolute top-8 w-full px-4">
-			<div class="flex flex-row justify-center">
-				{@render button('overview', i)}
-			</div>
-		</div>
 		<ToolCard {tool} />
-		<div class="absolute bottom-8 w-full px-4">
-			<div class="grid grid-cols-2 gap-x-4">
-				{@render button('prev', i)}
-				{@render button('next', i)}
+		<div class="absolute bottom-8 w-full px-16">
+			<div class="flex flex-row justify-between">
+				{#if i !== 0}
+					{@render button('prev', i)}
+				{:else}
+					{@render button('prev', i, true)}
+				{/if}
+				{#if i !== tools.length - 1}
+					{@render button('next', i)}
+				{:else}
+					{@render button('next', i, true)}
+				{/if}
 			</div>
 		</div>
 	</section>
 {/each}
 
-{#snippet button(type: 'prev' | 'next' | 'overview', index: number)}
+{#snippet button(type: 'prev' | 'next', index: number, disabled: boolean = false)}
 	<Button
 		onclick={() => {
-			if (type === 'overview') {
-				// scroll to the top of the page
-				const scrollContainer = document.querySelector('#scroll-container');
-				const headerContainer = document.querySelector('#site-header');
-				scrollContainer?.scrollTo({ top: headerContainer?.offsetHeight, behavior: 'smooth' });
-				return;
-			}
-			const slugIndex = index + (type === 'prev' ? -1 : 1);
-			goto(`/tools#${getSlugByIndex(slugIndex)}`);
+			const url = resolve(`/tools`) + `${tools[index + (type === 'prev' ? -1 : 1)].slug}`;
+			goto(url);
+			scrollToHash();
 		}}
-		class="min-w-24 flex-col text-center"
-		variant="outline"
-		disabled={getButtonDisabled(type, index)}
+		class="flex min-w-24 flex-col text-center"
+		variant="ghost"
+		disabled={index == 0 ? false : disabled}
 	>
-		<span>{getTextFromButtonType(type)}</span>
+		{#if index === 0}
+			<span>{`${type === 'prev' ? 'Overview' : 'Next'}`}</span>
+		{:else}
+			<span>{`${type === 'prev' ? 'Previous' : 'Next'}`}</span>
+		{/if}
 	</Button>
 {/snippet}

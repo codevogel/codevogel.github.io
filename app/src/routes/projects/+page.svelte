@@ -27,9 +27,9 @@
 	});
 </script>
 
-<div class="min-h-full px-6 text-center">
-	<h1 class="mb-2 text-2xl font-extrabold">Project overview</h1>
-	<p class="mb-4 text-sm text-foreground/50">
+<section class="flex flex-col px-6 text-center justify-center">
+	<h1 class="mb-2">Project overview</h1>
+	<p class="mb-4 subscript">
 		Click a project in the overview to jump to that project, or swipe down to scroll through them.
 	</p>
 	<div class="not-prose grid grid-cols-2 gap-x-4 gap-y-2">
@@ -37,11 +37,11 @@
 			<ProjectOverviewCard {project} />
 		{/each}
 	</div>
-</div>
+</section>
 
 {#each projects as project, i (i)}
 	<!-- Give each card a unique id based on its slug -->
-	<div id={project.slug}>
+	<section id={project.slug} class="flex flex-col justify-center">
 		<ProjectCard {project} />
-	</div>
+	</section>
 {/each}

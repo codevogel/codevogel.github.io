@@ -11,13 +11,16 @@
 	import Footer from '$lib/components/ui/footer.svelte';
 
 
-	onMount(() => {
-		const firstSection = document.querySelector('main > :first-child');
+	onMount(async () => {
+		await new Promise(resolve => setTimeout(resolve, 200));
+
+		const firstSection = document.querySelector('#content-container > :first-child');
 		const viewportHeight = window.innerHeight;
 		const headerHeight = document.querySelector('header')?.offsetHeight || 0;
 		const availableHeight = viewportHeight - headerHeight;
 
 		console.log(
+			firstSection,
 			firstSection?.offsetHeight > availableHeight,
 			firstSection?.offsetHeight,
 			availableHeight
@@ -47,9 +50,10 @@
 <!-- 	<footer class="h-footer snap-end bg-red-400"></footer> -->
 <!-- </div> -->
 
-<div class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto">
-	<header class="h-header snap-start"><Header/></header>
+<div id="scroll-container" class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto">
+	<header id="site-header" class="h-header snap-start"><Header/></header>
 	<main
+		id="content-container"
 		class="[&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:first-child.overflowing]:snap-start [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start"
 	>
 		{@render children?.()}
@@ -58,3 +62,20 @@
 		<Footer/>
 	</footer>
 </div>
+
+<style>
+	@reference "tailwindcss";
+
+	:global(h1) {
+		@apply text-3xl font-bold;
+	}
+
+	:global(h2) {
+		@apply text-xl font-semibold;
+	}
+
+	:global(.subscript) {
+		@apply text-sm italic;
+		color: color-mix(in oklab, var(--color-foreground) 40%, transparent);
+	}
+</style>

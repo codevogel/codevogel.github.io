@@ -24,19 +24,4 @@
 	<Skills {skillGroups} />
 </section>
 
-<style>
-	@reference "tailwindcss";
 
-	:global(h1) {
-		@apply text-3xl font-bold;
-	}
-
-	:global(h2) {
-		@apply text-xl font-semibold;
-	}
-
-	:global(.subscript) {
-		@apply text-sm italic;
-		color: color-mix(in oklab, var(--color-foreground) 40%, transparent);
-	}
-</style>
