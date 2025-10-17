@@ -9,9 +9,18 @@
 	import { onMount } from 'svelte';
 	import Header from '$lib/components/ui/header.svelte';
 	import Footer from '$lib/components/ui/footer.svelte';
+	import { afterNavigate } from '$app/navigation';
+
+	afterNavigate(async () => {
+		await determineSnapBehavior()
+	})
 
 
 	onMount(async () => {
+		await determineSnapBehavior()
+	});
+
+	async function determineSnapBehavior() {
 		await new Promise(resolve => setTimeout(resolve, 200));
 
 		const firstSection = document.querySelector('#content-container > :first-child');
@@ -29,7 +38,7 @@
 		if (firstSection && firstSection.offsetHeight > availableHeight) {
 			firstSection.classList.add('overflowing');
 		}
-	});
+	}
 </script>
 
 <svelte:head>
@@ -51,7 +60,7 @@
 <!-- </div> -->
 
 <div id="scroll-container" class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto">
-	<header id="site-header" class="h-header snap-start"><Header/></header>
+	<header id="site-header" class="h-header snap-start"><Header /></header>
 	<main
 		id="content-container"
 		class="[&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:first-child.overflowing]:snap-start [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start"
@@ -59,7 +68,7 @@
 		{@render children?.()}
 	</main>
 	<footer class="h-footer snap-end">
-		<Footer/>
+		<Footer />
 	</footer>
 </div>
 
