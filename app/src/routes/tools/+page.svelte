@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { afterNavigate, goto } from '$app/navigation';
+	import { afterNavigate } from '$app/navigation';
 	import ToolCard from '$lib/components/ui/tool-card.svelte';
-	import Button from '$lib/components/shadcn-svelte/ui/button/button.svelte';
+	import { ArrowDownIcon, ArrowUpIcon } from 'lucide-svelte';
 
 	let { data } = $props();
 	const tools = $derived(data.tools);
@@ -12,7 +12,7 @@
 		if (!hash) return;
 		const el = document.getElementById(hash);
 		if (el) {
-			//TODO: smooth scroll	
+			//TODO: smooth scroll
 			el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	}
@@ -26,33 +26,6 @@
 	afterNavigate(() => {
 		scrollToHash();
 	});
-
-	function getSlugByIndex(index: number) {
-		if (index >= 0 && index < tools.length) return tools[index].slug;
-		throw new Error(`Slug index ${index} is out of range!`);
-	}
-
-	function getTextFromButtonType(type: 'prev' | 'next' | 'overview'): string {
-		switch (type) {
-			case 'prev':
-				return 'Previous';
-			case 'next':
-				return 'Next';
-			case 'overview':
-				return 'Back to Overview';
-		}
-	}
-
-	function getButtonDisabled(type: 'prev' | 'next' | 'overview', index: number): boolean {
-		switch (type) {
-			case 'prev':
-				return index === 0;
-			case 'next':
-				return index === tools.length - 1;
-			case 'overview':
-				return false;
-		}
-	}
 </script>
 
 <section class="flex flex-col px-6 pt-4 pb-64 text-center">
@@ -77,6 +50,9 @@
 					/>
 				</div>
 			</a>
+			{#if i !== tools.length - 1}
+				<hr class="my-2 border-accent" />
+			{/if}
 		{/each}
 	</div>
 </section>
@@ -85,37 +61,23 @@
 	<!-- Give each card a unique id based on its slug -->
 	<section id={tool.slug} class="relative flex flex-col justify-center gap-y-8">
 		<div class="absolute top-8 w-full px-4">
-			<div class="flex flex-row justify-center">
-				{@render button('overview', i)}
+			<div class="flex flex-col items-center text-accent">
+				<ArrowUpIcon />
+				{#if i === 0}
+					Overview
+				{:else}
+					{tools[i - 1].title}
+				{/if}
 			</div>
 		</div>
 		<ToolCard {tool} />
 		<div class="absolute bottom-8 w-full px-4">
-			<div class="grid grid-cols-2 gap-x-4">
-				{@render button('prev', i)}
-				{@render button('next', i)}
+			<div class="flex flex-col items-center text-accent">
+				{#if i !== tools.length - 1}
+					{tools[i + 1].title}
+					<ArrowDownIcon />
+				{/if}
 			</div>
 		</div>
 	</section>
 {/each}
-
-{#snippet button(type: 'prev' | 'next' | 'overview', index: number)}
-	<Button
-		onclick={() => {
-			if (type === 'overview') {
-				// scroll to the top of the page
-				const scrollContainer = document.querySelector('#scroll-container');
-				const headerContainer = document.querySelector('#site-header');
-				scrollContainer?.scrollTo({ top: headerContainer?.offsetHeight, behavior: 'smooth' });
-				return;
-			}
-			const slugIndex = index + (type === 'prev' ? -1 : 1);
-			goto(`/tools#${getSlugByIndex(slugIndex)}`);
-		}}
-		class="min-w-24 flex-col text-center"
-		variant="outline"
-		disabled={getButtonDisabled(type, index)}
-	>
-		<span>{getTextFromButtonType(type)}</span>
-	</Button>
-{/snippet}
