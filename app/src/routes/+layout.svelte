@@ -11,30 +11,29 @@
 
 	let { children } = $props();
 
-	let contentContainer: HTMLElement | null = $state(null);
-	let scrollContainer: HTMLElement | null = $state(null);
+	let headerContainer: HTMLElement | undefined = $state();
+	let contentContainer: HTMLElement | undefined = $state();
+	let scrollContainer: HTMLElement | undefined = $state();
+	let firstSection: HTMLElement | null = $state(null);
 
-	afterNavigate(async () => {
-		await determineSnapBehavior();
+	let windowHeight: number | undefined = $state()
+
+	let availableHeight: number = $derived.by(() => {
+		return windowHeight && headerContainer ? windowHeight - headerContainer.offsetHeight : 0;
+	});
+	let firstSectionOverflowing: boolean = $derived.by(() => {
+		return firstSection ? firstSection.offsetHeight > availableHeight : false;
 	});
 
 	onMount(async () => {
-		await determineSnapBehavior();
+		windowHeight = window.innerHeight;
+		firstSection = contentContainer?.querySelector('section:first-child') || null;
 	});
 
-	async function determineSnapBehavior() {
-		await new Promise((resolve) => setTimeout(resolve, 200));
-		if (!contentContainer) return;
-		const firstSection: HTMLElement | null =
-			contentContainer.querySelector('section:first-child');
-		const viewportHeight = window.innerHeight;
-		const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-		const availableHeight = viewportHeight - headerHeight;
-
-		if (firstSection && firstSection.offsetHeight > availableHeight) {
-			firstSection.classList.add('overflowing');
-		}
-	}
+	afterNavigate(async () => {
+		windowHeight = window.innerHeight;
+		firstSection = contentContainer?.querySelector('section:first-child') || null;
+	});
 </script>
 
 <svelte:head>
@@ -52,11 +51,15 @@
 	class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto"
 	bind:this={scrollContainer}
 >
-	<header id="site-header" class="h-header snap-start"><Header /></header>
+	<header id="site-header" bind:this={headerContainer} class="h-header snap-start">
+		<Header />
+	</header>
 	<main
 		id="content-container"
 		bind:this={contentContainer}
-		class="[&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:first-child.overflowing]:snap-start [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start"
+		class="[&.first-section-overflowing>:first-child]:snap-start [&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start {firstSectionOverflowing
+			? 'first-section-overflowing'
+			: ''}"
 	>
 		{@render children?.()}
 	</main>
