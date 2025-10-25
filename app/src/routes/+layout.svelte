@@ -18,22 +18,31 @@
 
 	let windowHeight: number | undefined = $state()
 
+	// Calculate available height for the first section
+	// This is determined by subtracting the header height from the viewport height
 	let availableHeight: number = $derived.by(() => {
 		return windowHeight && headerContainer ? windowHeight - headerContainer.offsetHeight : 0;
 	});
+
+	// The first section overflows if its height exceeds the available height
 	let firstSectionOverflowing: boolean = $derived.by(() => {
 		return firstSection ? firstSection.offsetHeight > availableHeight : false;
 	});
 
 	onMount(async () => {
-		windowHeight = window.innerHeight;
-		firstSection = contentContainer?.querySelector('section:first-child') || null;
+		window.addEventListener('resize', updateLayoutState);
+		updateLayoutState();
 	});
 
 	afterNavigate(async () => {
+		updateLayoutState();
+	});
+
+	function updateLayoutState() {
 		windowHeight = window.innerHeight;
 		firstSection = contentContainer?.querySelector('section:first-child') || null;
-	});
+	}
+
 </script>
 
 <svelte:head>
