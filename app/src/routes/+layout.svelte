@@ -7,10 +7,12 @@
 	import Header from '$lib/components/ui/header.svelte';
 	import Footer from '$lib/components/ui/footer.svelte';
 	import { afterNavigate } from '$app/navigation';
+	import ScrollToTopButton from '$lib/components/ui/scroll-to-top-button.svelte';
 
 	let { children } = $props();
 
-	let contentContainer: HTMLElement;
+	let contentContainer: HTMLElement | null = $state(null);
+	let scrollContainer: HTMLElement | null = $state(null);
 
 	afterNavigate(async () => {
 		await determineSnapBehavior();
@@ -22,9 +24,9 @@
 
 	async function determineSnapBehavior() {
 		await new Promise((resolve) => setTimeout(resolve, 200));
-
+		if (!contentContainer) return;
 		const firstSection: HTMLElement | null =
-			contentContainer?.querySelector('section:first-child');
+			contentContainer.querySelector('section:first-child');
 		const viewportHeight = window.innerHeight;
 		const headerHeight = document.querySelector('header')?.offsetHeight || 0;
 		const availableHeight = viewportHeight - headerHeight;
@@ -41,7 +43,15 @@
 
 <Toaster />
 
-<div id="scroll-container" class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto">
+<div class="absolute right-0 bottom-0 z-50 mr-4 mb-4">
+	<ScrollToTopButton {scrollContainer} targetContainer={contentContainer} />
+</div>
+
+<div
+	id="scroll-container"
+	class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto"
+	bind:this={scrollContainer}
+>
 	<header id="site-header" class="h-header snap-start"><Header /></header>
 	<main
 		id="content-container"
