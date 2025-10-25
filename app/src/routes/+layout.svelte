@@ -3,13 +3,14 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { Toaster } from '$lib/components/shadcn-svelte/ui/sonner';
-
-	let { children } = $props();
-
 	import { onMount } from 'svelte';
 	import Header from '$lib/components/ui/header.svelte';
 	import Footer from '$lib/components/ui/footer.svelte';
 	import { afterNavigate } from '$app/navigation';
+
+	let { children } = $props();
+
+	let contentContainer: HTMLElement;
 
 	afterNavigate(async () => {
 		await determineSnapBehavior();
@@ -22,9 +23,8 @@
 	async function determineSnapBehavior() {
 		await new Promise((resolve) => setTimeout(resolve, 200));
 
-		const firstSection: HTMLElement | null = document.querySelector(
-			'#content-container > :first-child'
-		);
+		const firstSection: HTMLElement | null =
+			contentContainer?.querySelector('section:first-child');
 		const viewportHeight = window.innerHeight;
 		const headerHeight = document.querySelector('header')?.offsetHeight || 0;
 		const availableHeight = viewportHeight - headerHeight;
@@ -45,6 +45,7 @@
 	<header id="site-header" class="h-header snap-start"><Header /></header>
 	<main
 		id="content-container"
+		bind:this={contentContainer}
 		class="[&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:first-child.overflowing]:snap-start [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start"
 	>
 		{@render children?.()}
