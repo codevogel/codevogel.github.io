@@ -27,6 +27,7 @@
 				<img
 					src={`/projects/${project.slug}/${project.slug}${project.hasGif ? '.gif' : '.png'}`}
 					alt={`Screenshot of ${project.title}`}
+					class="aspect-video"
 				/>
 			{/if}
 		</Card.Content>
