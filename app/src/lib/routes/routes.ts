@@ -7,7 +7,7 @@ export type Page = {
 
 export const pages: Page[] = [
 	{ name: 'Home', path: '/' },
-	{ name: 'Projects', path: '/projects' },
+	{ name: 'Games', path: '/games' },
 	{ name: 'Tools', path: '/tools' },
 	{ name: 'Contact', path: '/contact' }
 ];

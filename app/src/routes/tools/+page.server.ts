@@ -1,4 +1,4 @@
-import { tools } from '$lib/server/data/tools';
+import { tools } from '$lib/server/data/projects';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {

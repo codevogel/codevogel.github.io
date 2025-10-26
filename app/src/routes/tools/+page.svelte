@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ToolOverview from '$lib/components/ui/tool-overview.svelte';
-	import ToolList from '$lib/components/ui/tool-list.svelte';
+	import ProjectOverview from '$lib/components/ui/project-overview.svelte';
+	import ProjectList from '$lib/components/ui/project-list.svelte';
 	import { getScrollContainerContext } from '$lib/context';
 	import { scrollToTopOfContainer } from '$lib/common/scroll.js';
 	import { pushState } from '$app/navigation';
@@ -24,5 +24,5 @@
 	}
 </script>
 
-<ToolOverview {tools} {onSlugClick} />
-<ToolList {tools} />
+<ProjectOverview type="tool" projects={tools} {onSlugClick} />
+<ProjectList projects={tools} />

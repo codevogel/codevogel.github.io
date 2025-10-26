@@ -1,4 +1,7 @@
+export type ProjectType = 'game' | 'tool';
+
 export type Project = {
+	type: ProjectType;
 	title: string;
 	shortDescription: string;
 	description: string;
@@ -6,10 +9,17 @@ export type Project = {
 	hasGif?: boolean;
 	wip?: boolean;
 	youtubeURL?: string;
+	readmeURL?: string;
 };
 
-export const projects: Project[] = [
+export type Game = Project & { type: 'game' };
+export type Tool = Project & { type: 'tool' };
+
+
+
+export const games: Game[] = [
 	{
+		type: 'game',
 		title: 'Detective Duck',
 		shortDescription: 'Demonstrates use of LLMs in serious games.',
 		description: 'A visual novel game where you play as a duck detective solving mysteries.',
@@ -17,6 +27,7 @@ export const projects: Project[] = [
 		youtubeURL: 'https://www.youtube.com/watch?v=e1HN3MVz4hs'
 	},
 	{
+		type: 'game',
 		title: 'Reggie: The Game',
 		shortDescription: 'A gravity-bending platformer in which you travel through time',
 		description:
@@ -25,6 +36,7 @@ export const projects: Project[] = [
 		youtubeURL: 'https://www.youtube.com/watch?v=EsMAK-gHFMI'
 	},
 	{
+		type: 'game',
 		title: 'Look Out!',
 		shortDescription: 'An eye-tracked horror game. Every glance could be your last.',
 		description:
@@ -32,6 +44,7 @@ export const projects: Project[] = [
 		slug: 'look-out'
 	},
 	{
+		type: 'game',
 		title: 'Ouija.TV',
 		shortDescription: 'Play Ouija with your twitch chat. Let the spirits guide you.',
 		description:
@@ -39,6 +52,7 @@ export const projects: Project[] = [
 		slug: 'ouija-tv'
 	},
 	{
+		type: 'game',
 		title: 'Robotlab VR',
 		shortDescription: 'VR training simulator for industrial robots.',
 		description:
@@ -47,6 +61,7 @@ export const projects: Project[] = [
 		youtubeURL: 'https://www.youtube.com/watch?v=oIzACzUwmVM'
 	},
 	{
+		type: 'game',
 		title: 'Runic Roots',
 		shortDescription: 'A farming game meets a deckbuilder.',
 		description:
@@ -55,6 +70,7 @@ export const projects: Project[] = [
 		slug: 'runic-roots'
 	},
 	{
+		type: 'game',
 		title: 'Pogo Peaks',
 		shortDescription: 'Climb a mountain using a pogo stick.',
 		description:
@@ -64,11 +80,59 @@ export const projects: Project[] = [
 		slug: 'pogo-peaks'
 	},
 	{
+		type: 'game',
 		title: 'Liars',
 		shortDescription: 'A physical card game about deception and deduction.',
 		description:
 			'A social trivia game where players bluff, and try to catch others in their lies.',
 		wip: true,
 		slug: 'liars'
+	}
+];
+
+export const tools: Tool[] = [
+	{
+		type: 'tool',
+		title: 'Godot Doctor',
+		shortDescription: 'A plugin that helps you validate your scenes in Godot.',
+		description:
+			'A powerful validation plugin for Godot that catches errors before they reach runtime. Validate scenes, nodes, and resources using a declarative, test-driven approach. No @tool required!',
+		slug: 'godot-doctor',
+		readmeURL:
+			'https://raw.githubusercontent.com/codevogel/godot_doctor/refs/heads/main/README.md'
+	},
+	{
+		type: 'tool',
+		title: 'Faux 3D Perspective Shader',
+		shortDescription: 'A shader that creates a faux 3D perspective effect in Godot.',
+		description:
+			'A versatile shader for Godot that simulates a faux 3D perspective effect. Perfect for creating depth and immersion in 2D games, this shader can be easily customized to fit your art style and game design needs.',
+		slug: 'faux-3d-perspective-shader',
+		hasGif: true
+	},
+	{
+		type: 'tool',
+		title: 'mkp5',
+		shortDescription: 'Creates p5.js projects from the command line.',
+		description:
+			'A command-line tool that streamlines the creation of p5.js projects. With mkp5, you can quickly set up a new p5.js project with a single command.',
+		slug: 'mkp5'
+	},
+	{
+		type: 'tool',
+		title: 'pls',
+		shortDescription:
+			'pls centralize aliases! Unify your workflow with context-aware alias management.',
+		description:
+			'Project Level Shortcuts (pls) is a command-line tool that allows you to create, manage, and execute custom context-aware aliases for frequently used commands using portable .pls.yml files.',
+		slug: 'pls'
+	},
+	{
+		type: 'tool',
+		title: 'Circuit Patch Converter',
+		shortDescription: 'Converts patches between different formats for the Novation Circuit.',
+		description:
+			'Converts patches from the old Novation Circuit format to the new Circuit format, bringing back backwards compatability.',
+		slug: 'circuit-patch-converter'
 	}
 ];

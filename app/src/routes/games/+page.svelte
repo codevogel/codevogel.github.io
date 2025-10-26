@@ -6,7 +6,7 @@
 	import { pushState } from '$app/navigation';
 
 	let { data } = $props();
-	const projects = $derived(data.projects);
+	const games = $derived(data.games);
 
 	let scrollContainerContext = getScrollContainerContext();
 
@@ -24,5 +24,5 @@
 	}
 </script>
 
-<ProjectOverview {projects} {onSlugClick} />
-<ProjectList {projects} />
+<ProjectOverview type="game" projects={games} {onSlugClick} />
+<ProjectList projects={games} />
