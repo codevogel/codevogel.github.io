@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { scrollToTopOfContainer } from '$lib/common/scroll';
 	import Button from '$lib/components/shadcn-svelte/ui/button/button.svelte';
-	import { getContentContainerContext, getScrollContainerContext } from '$lib/context';
+	import { getHeaderContainerContext, getScrollContainerContext } from '$lib/context';
 	import { ChevronsUp } from 'lucide-svelte';
 
 	let scrollContainerContext = getScrollContainerContext();
-	let contentContainerContext = getContentContainerContext();
+	let headerContainerContext = getHeaderContainerContext();
 	
 	function scrollToTop() {
 		const scrollContainer = scrollContainerContext();
@@ -14,7 +14,7 @@
 			return;
 		}
 
-		const contentContainer = contentContainerContext();
+		const contentContainer = headerContainerContext();
 		if (!contentContainer) {
 			console.warn('Content container not found in context.');
 			return;

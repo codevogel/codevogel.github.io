@@ -7,7 +7,7 @@
 	import Footer from '$lib/components/ui/footer.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import ScrollToTopButton from '$lib/components/ui/scroll-to-top-button.svelte';
-	import { setContentContainerContext, setScrollContainerContext } from '$lib/context';
+	import { setContentContainerContext, setHeaderContainerContext, setScrollContainerContext } from '$lib/context';
 
 	let { children } = $props();
 
@@ -16,6 +16,7 @@
 	let contentContainer: HTMLElement | undefined = $state();
 	let firstSection: HTMLElement | undefined = $state();
 
+	setHeaderContainerContext(() => headerContainer);
 	setScrollContainerContext(() => scrollContainer);
 	setContentContainerContext(() => contentContainer);
 
