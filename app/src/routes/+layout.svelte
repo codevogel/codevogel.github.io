@@ -45,6 +45,10 @@
 	function setWindowHeight() {
 		windowHeight = window.innerHeight;
 	}
+
+	function attachContainer(setter: (node: HTMLElement) => void) {
+		return (node: HTMLElement) => setter(node);
+	}
 </script>
 
 <svelte:head>
@@ -62,17 +66,17 @@
 <div
 	id="scroll-container"
 	class="h-dvh max-h-dvh snap-y snap-mandatory overflow-y-auto"
-	bind:this={scrollContainer}
+	{@attach attachContainer(node => (scrollContainer = node))}
 >
-	<header id="site-header" bind:this={headerContainer} class="h-header snap-start">
+	<header id="site-header" class="h-header snap-start" {@attach attachContainer(node => (scrollContainer = node))}>
 		<Header />
 	</header>
 	<main
 		id="content-container"
-		bind:this={contentContainer}
 		class="*:min-h-page *:snap-start *:first:min-h-page-without-header *:first:snap-end *:last:min-h-page-without-footer *:only:min-h-page-without-header-and-footer *:only:snap-start [&.first-section-overflowing>:first-child]:snap-start {firstSectionOverflowing
 			? 'first-section-overflowing'
 			: ''}"
+		{@attach attachContainer(node => (contentContainer = node))}
 	>
 		{@render children?.()}
 	</main>
