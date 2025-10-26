@@ -1,9 +1,8 @@
-<!-- +layout.svelte -->
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { Toaster } from '$lib/components/shadcn-svelte/ui/sonner';
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import Header from '$lib/components/ui/header.svelte';
 	import Footer from '$lib/components/ui/footer.svelte';
 	import { afterNavigate } from '$app/navigation';
@@ -14,7 +13,7 @@
 	let headerContainer: HTMLElement | undefined = $state();
 	let contentContainer: HTMLElement | undefined = $state();
 	let scrollContainer: HTMLElement | undefined = $state();
-	let firstSection: HTMLElement | null = $state(null);
+	let firstSection: HTMLElement | undefined = $state();
 
 	let windowHeight: number | undefined = $state();
 
@@ -31,6 +30,8 @@
 
 	onMount(() => {
 		setWindowHeight();
+		setContext('scrollContainer', scrollContainer);
+		setContext('contentContainer', contentContainer);
 		identifyFirstSection();
 	});
 
@@ -39,7 +40,7 @@
 	});
 
 	function identifyFirstSection() {
-		firstSection = contentContainer?.querySelector('section:first-child') ?? null;
+		firstSection = contentContainer?.querySelector('section:first-child') ?? undefined;
 	}
 
 	function setWindowHeight() {
@@ -60,7 +61,7 @@
 <Toaster />
 
 <div class="absolute right-0 bottom-0 z-50 mr-4 mb-4">
-	<ScrollToTopButton {scrollContainer} targetContainer={contentContainer} />
+	<ScrollToTopButton />
 </div>
 
 <div
