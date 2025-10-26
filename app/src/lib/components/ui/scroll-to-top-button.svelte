@@ -25,7 +25,7 @@
 	}
 </script>
 
-<Button variant="outline" class="flex flex-col" onclick={() => scrollToTop()}>
+<Button variant="nav" class="flex flex-col bg-background border-foreground/25 border-1" onclick={() => scrollToTop()}>
 	<span>
 		<ChevronsUp />
 	</span>
