@@ -1,7 +1,7 @@
 import { tools } from '$lib/server/data/projects';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, fetch }) => {
 	const { slug } = params;
 
 	const tool = tools.find((tool) => tool.slug === slug);
