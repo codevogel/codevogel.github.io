@@ -62,7 +62,7 @@
 
 <div
 	id="scroll-container"
-	class="h-[100dvh] max-h-[100dvh] snap-y snap-mandatory overflow-y-auto"
+	class="h-dvh max-h-dvh snap-y snap-mandatory overflow-y-auto"
 	bind:this={scrollContainer}
 >
 	<header id="site-header" bind:this={headerContainer} class="h-header snap-start">
@@ -71,7 +71,7 @@
 	<main
 		id="content-container"
 		bind:this={contentContainer}
-		class="[&.first-section-overflowing>:first-child]:snap-start [&>*]:min-h-page [&>*]:snap-start [&>:first-child]:min-h-page-without-header [&>:first-child]:snap-end [&>:last-child]:min-h-page-without-footer [&>:only-child]:min-h-page-without-header-and-footer [&>:only-child]:snap-start {firstSectionOverflowing
+		class="[&.first-section-overflowing>:first-child]:snap-start *:min-h-page *:snap-start *:first:min-h-page-without-header *:first:snap-end *:last:min-h-page-without-footer *:only:min-h-page-without-header-and-footer *:only:snap-start {firstSectionOverflowing
 			? 'first-section-overflowing'
 			: ''}"
 	>
