@@ -16,7 +16,7 @@
 	let scrollContainer: HTMLElement | undefined = $state();
 	let firstSection: HTMLElement | null = $state(null);
 
-	let windowHeight: number | undefined = $state()
+	let windowHeight: number | undefined = $state();
 
 	// Calculate available height for the first section
 	// This is determined by subtracting the header height from the viewport height
@@ -45,14 +45,13 @@
 	function setWindowHeight() {
 		windowHeight = window.innerHeight;
 	}
-
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<svelte:window onresize={setWindowHeight}/>
+<svelte:window onresize={setWindowHeight} />
 
 <Toaster />
 
@@ -71,7 +70,7 @@
 	<main
 		id="content-container"
 		bind:this={contentContainer}
-		class="[&.first-section-overflowing>:first-child]:snap-start *:min-h-page *:snap-start *:first:min-h-page-without-header *:first:snap-end *:last:min-h-page-without-footer *:only:min-h-page-without-header-and-footer *:only:snap-start {firstSectionOverflowing
+		class="*:min-h-page *:snap-start *:first:min-h-page-without-header *:first:snap-end *:last:min-h-page-without-footer *:only:min-h-page-without-header-and-footer *:only:snap-start [&.first-section-overflowing>:first-child]:snap-start {firstSectionOverflowing
 			? 'first-section-overflowing'
 			: ''}"
 	>
@@ -81,20 +80,3 @@
 		<Footer />
 	</footer>
 </div>
-
-<style>
-	@reference "tailwindcss";
-
-	:global(h1) {
-		@apply text-3xl font-bold;
-	}
-
-	:global(h2) {
-		@apply text-xl font-semibold;
-	}
-
-	:global(.subscript) {
-		@apply text-sm italic;
-		color: color-mix(in oklab, var(--color-foreground) 40%, transparent);
-	}
-</style>
