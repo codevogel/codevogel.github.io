@@ -29,18 +29,21 @@
 		return firstSection ? firstSection.offsetHeight > availableHeight : false;
 	});
 
-	onMount(async () => {
-		window.addEventListener('resize', updateLayoutState);
-		updateLayoutState();
+	onMount(() => {
+		setWindowHeight();
+		identifyFirstSection();
 	});
 
-	afterNavigate(async () => {
-		updateLayoutState();
+	afterNavigate(() => {
+		identifyFirstSection();
 	});
 
-	function updateLayoutState() {
+	function identifyFirstSection() {
+		firstSection = contentContainer?.querySelector('section:first-child') ?? null;
+	}
+
+	function setWindowHeight() {
 		windowHeight = window.innerHeight;
-		firstSection = contentContainer?.querySelector('section:first-child') || null;
 	}
 
 </script>
@@ -48,6 +51,8 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
+
+<svelte:window onresize={setWindowHeight}/>
 
 <Toaster />
 
