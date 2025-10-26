@@ -2,18 +2,22 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { Toaster } from '$lib/components/shadcn-svelte/ui/sonner';
-	import { onMount, setContext } from 'svelte';
+	import { onMount } from 'svelte';
 	import Header from '$lib/components/ui/header.svelte';
 	import Footer from '$lib/components/ui/footer.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import ScrollToTopButton from '$lib/components/ui/scroll-to-top-button.svelte';
+	import { setContentContainerContext, setScrollContainerContext } from '$lib/context';
 
 	let { children } = $props();
 
+	let scrollContainer: HTMLElement | undefined = $state();
 	let headerContainer: HTMLElement | undefined = $state();
 	let contentContainer: HTMLElement | undefined = $state();
-	let scrollContainer: HTMLElement | undefined = $state();
 	let firstSection: HTMLElement | undefined = $state();
+
+	setScrollContainerContext(() => scrollContainer);
+	setContentContainerContext(() => contentContainer);
 
 	let windowHeight: number | undefined = $state();
 
@@ -30,8 +34,6 @@
 
 	onMount(() => {
 		setWindowHeight();
-		setContext('scrollContainer', scrollContainer);
-		setContext('contentContainer', contentContainer);
 		identifyFirstSection();
 	});
 
@@ -67,9 +69,13 @@
 <div
 	id="scroll-container"
 	class="h-dvh max-h-dvh snap-y snap-mandatory overflow-y-auto"
-	{@attach attachContainer(node => (scrollContainer = node))}
+	{@attach attachContainer((node) => (scrollContainer = node))}
 >
-	<header id="site-header" class="h-header snap-start" {@attach attachContainer(node => (scrollContainer = node))}>
+	<header
+		id="site-header"
+		class="h-header snap-start"
+		{@attach attachContainer((node) => (headerContainer = node))}
+	>
 		<Header />
 	</header>
 	<main
@@ -77,7 +83,7 @@
 		class="*:min-h-page *:snap-start *:first:min-h-page-without-header *:first:snap-end *:last:min-h-page-without-footer *:only:min-h-page-without-header-and-footer *:only:snap-start [&.first-section-overflowing>:first-child]:snap-start {firstSectionOverflowing
 			? 'first-section-overflowing'
 			: ''}"
-		{@attach attachContainer(node => (contentContainer = node))}
+		{@attach attachContainer((node) => (contentContainer = node))}
 	>
 		{@render children?.()}
 	</main>

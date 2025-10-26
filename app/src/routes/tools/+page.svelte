@@ -1,31 +1,29 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { afterNavigate } from '$app/navigation';
 	import ToolCard from '$lib/components/ui/tool-card.svelte';
 	import { ArrowDownIcon, ArrowUpIcon } from 'lucide-svelte';
+
+	import { getScrollContainerContext } from '$lib/context';
+	import { scrollToTopOfContainer } from '$lib/common/scroll.js';
+	import { pushState } from '$app/navigation';
+
 
 	let { data } = $props();
 	const tools = $derived(data.tools);
 
-	function scrollToHash() {
-		const hash = window.location.hash?.slice(1);
-		if (!hash) return;
-		const el = document.getElementById(hash);
-		if (el) {
-			//TODO: smooth scroll
-			el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		}
+	let scrollContainerContext = getScrollContainerContext();
+	
+	function onSlugClick(slug: string) {
+		return (event: MouseEvent) => {
+			event.preventDefault();
+			const targetElement = document.getElementById(slug);
+			const scrollContainer = scrollContainerContext();
+			if (targetElement && scrollContainer) {
+				scrollToTopOfContainer(scrollContainer, targetElement);
+			}
+			// eslint-disable-next-line svelte/no-navigation-without-resolve
+			pushState(`/tools#${slug}`, {});
+		};
 	}
-
-	onMount(() => {
-		scrollToHash();
-		window.addEventListener('hashchange', scrollToHash);
-		return () => window.removeEventListener('hashchange', scrollToHash);
-	});
-
-	afterNavigate(() => {
-		scrollToHash();
-	});
 </script>
 
 <section class="flex flex-col px-6 pt-4 pb-64 text-center">
@@ -35,9 +33,9 @@
 	</p>
 	<div class="flex flex-col gap-y-2 text-start">
 		{#each tools as tool, i (i)}
-			<a
-				class="grid grid-cols-2 hover:[&_.hover-target]:text-primary"
-				href={`/tools#${tool.slug}`}
+			<button
+				class="grid grid-cols-2 hover:[&_.hover-target]:text-primary hover:cursor-pointer"
+				onclick={onSlugClick(tool.slug)}
 			>
 				<div class="flex flex-col">
 					<span class="hover-target font-bold">{tool.title}</span>
@@ -49,7 +47,7 @@
 						alt={`${tool.title} preview image`}
 					/>
 				</div>
-			</a>
+			</button>
 			{#if i !== tools.length - 1}
 				<hr class="my-2 border-accent" />
 			{/if}
