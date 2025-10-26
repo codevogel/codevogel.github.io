@@ -12,9 +12,18 @@
 	import rehypeSlug from 'rehype-slug';
 	import { getScrollContainerContext } from '$lib/context';
 	import { scrollToTopOfContainer } from '$lib/common/scroll.js';
-	import { pushState } from '$app/navigation';
+	import { afterNavigate, pushState } from '$app/navigation';
+	import { page } from '$app/state';
 
 	let scrollContainerContext = getScrollContainerContext();
+
+	afterNavigate(() => {
+		if (page.url.hash) { return; }
+		const scrollContainer = scrollContainerContext();
+		if (scrollContainer) {
+			scrollToTopOfContainer(scrollContainer, scrollContainer);
+		}
+	});
 
 	let { data } = $props();
 
