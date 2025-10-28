@@ -4,6 +4,7 @@
 	import { afterNavigate, pushState } from '$app/navigation';
 	import { getScrollContainerContext } from '$lib/context';
 	import { scrollToTopOfContainer } from '$lib/common/scroll.js';
+	import type { Project } from '$lib/server/data/projects';
 
 	// --- exmarkdown imports ---
 	import type { Plugin } from 'svelte-exmarkdown';
@@ -22,8 +23,9 @@
 	import gdscript from 'shiki/langs/gdscript.mjs';
 	import kanagawa from 'shiki/themes/kanagawa-wave.mjs';
 	import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
+	import rehypeProjectStatus from '$lib/rehype/insert-project-status';
 
-	let { readme } = $props();
+	let { readme, project }: { readme: string, project: Project } = $props();
 
 	let scrollContainerContext = getScrollContainerContext();
 
@@ -57,7 +59,11 @@
 		rehypePlugin: [rehypeSlug]
 	} satisfies Plugin;
 
-	const plugins: Plugin[] = [gfmPlugin(), shikiPlugin, rawPlugin, slugPlugin];
+	const projectStatusPlugin = {
+		rehypePlugin: [rehypeProjectStatus, project.workStatus]
+	} satisfies Plugin;
+
+	const plugins: Plugin[] = [gfmPlugin(), shikiPlugin, rawPlugin, slugPlugin, projectStatusPlugin];
 
 	function interceptLinkClicks(e: MouseEvent & { currentTarget: EventTarget & HTMLDivElement }) {
 		const a = (e.target as HTMLElement).closest('a');
