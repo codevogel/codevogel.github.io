@@ -6,4 +6,5 @@ bun.lock
 bun.lockb
 
 # Miscellaneous
-/static/
+
+# Ignore static by default but allow Markdown files so Prettier can format them
