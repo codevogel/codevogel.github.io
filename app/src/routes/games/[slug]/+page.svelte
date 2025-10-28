@@ -4,6 +4,7 @@
 	let { data } = $props();
 
 	let readme = $derived(data.readme);
+	let project = $derived(data.project);
 </script>
 
-<ReadmeRenderer {readme} />
+<ReadmeRenderer {readme} {project} />

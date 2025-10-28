@@ -1,13 +1,11 @@
-export type ProjectType = 'game' | 'tool';
-
 export type Project = {
-	type: ProjectType;
+	type: 'game' | 'tool';
 	title: string;
 	shortDescription: string;
 	description: string;
 	slug: string;
 	hasGif?: boolean;
-	wip?: boolean;
+	workStatus?: 'active' | 'postponed' | 'icebox' | 'abandoned';
 	youtubeURL?: string;
 	readmeURL?: string;
 };
@@ -64,7 +62,7 @@ export const games: Game[] = [
 		shortDescription: 'A farming game meets a deckbuilder.',
 		description:
 			'Build out your deck by growing and harvesting magical plants, then use your deck to defeat enemies.',
-		wip: true,
+		workStatus: 'active',
 		slug: 'runic-roots'
 	},
 	{
@@ -74,7 +72,7 @@ export const games: Game[] = [
 		description:
 			'A physics-based climbing game where you use a pogo stick to ascend challenging peaks.',
 		hasGif: true,
-		wip: true,
+		workStatus: 'icebox',
 		slug: 'pogo-peaks'
 	},
 	{
@@ -83,7 +81,7 @@ export const games: Game[] = [
 		shortDescription: 'A physical card game about deception and deduction.',
 		description:
 			'A social trivia game where players bluff, and try to catch others in their lies.',
-		wip: true,
+		workStatus: 'active',
 		slug: 'liars'
 	}
 ];
@@ -151,3 +149,5 @@ export const tools: Tool[] = [
 			'https://raw.githubusercontent.com/codevogel/CircuitPatchConverter/refs/heads/main/README.md'
 	}
 ];
+
+export const projects: Project[] = [...games, ...tools];
