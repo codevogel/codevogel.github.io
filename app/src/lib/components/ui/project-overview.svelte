@@ -23,6 +23,7 @@
 				<div class="aspect-video">
 					<img
 						src={`/projects/${project.type}s/${project.slug}/${project.slug}${project.hasGif ? '.gif' : '.png'}`}
+						class="rounded-lg"
 						alt={`${project.title} preview image`}
 					/>
 				</div>
