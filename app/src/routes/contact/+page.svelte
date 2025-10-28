@@ -12,7 +12,7 @@
 		/>Then, I would love to hear from you!<br />Please don't hesitate to contact me at:
 	</p>
 	<button
-		class="relative mx-8 rounded-2xl bg-primary px-4 py-3 font-mono text-lg font-extrabold text-background hover:bg-foreground hover:text-background"
+		class="text-md gap-x-4 mx-auto flex flex-row items-center justify-between rounded-2xl bg-primary px-4 py-3 font-mono font-extrabold text-background hover:bg-foreground hover:text-background"
 		onclick={() => {
 			navigator.clipboard.writeText('contact@codevogel.com');
 			toast(
@@ -20,8 +20,8 @@
 			);
 		}}
 	>
-		contact<span class="hidden">spam-protection</span>@codevogel.com
-		<span class="absolute top-4 right-4"> <CopyIcon size={16} /></span>
+		contact<span class="hidden">-dont-spam-me</span>@codevogel.com
+		<CopyIcon size={16} />
 	</button>
 	<p>
 		Feel free to contact me for anything else as well.
@@ -35,7 +35,7 @@
 
 <div class="flex flex-col items-center justify-center gap-y-8">
 	<FindMeOn />
-	<h1 class="text-xl">My Resume</h1>
+	<h1>My Resume</h1>
 	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a href="/pdf/resume-kamiel-de-visser.pdf">
 		<FileUserIcon size={48} class="hover:stroke-primary" />
