@@ -24,7 +24,7 @@
 	);
 </script>
 
-<div class="flex flex-col justify-center text-center gap-y-8">
+<div class="flex flex-col justify-center gap-y-8 text-center">
 	<Carousel.Root opts={{ loop: true }} setApi={(emblaAPI) => (api = emblaAPI)}>
 		<Carousel.Content>
 			<Carousel.Item class="flex flex-col justify-start gap-y-2">

@@ -4,7 +4,7 @@
 	let { jobs } = $props();
 </script>
 
-<div class="text-center mb-4">
+<div class="mb-4 text-center">
 	<h3 class="text-3xl font-bold">Work Experience</h3>
 	<p class="subscript">Hover over a job to see more details.</p>
 </div>

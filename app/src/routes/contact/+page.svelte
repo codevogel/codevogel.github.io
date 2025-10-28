@@ -12,7 +12,7 @@
 		/>Then, I would love to hear from you!<br />Please don't hesitate to contact me at:
 	</p>
 	<button
-		class="text-md gap-x-4 mx-auto flex flex-row items-center justify-between rounded-2xl bg-primary px-4 py-3 font-mono font-extrabold text-background hover:bg-foreground hover:text-background"
+		class="text-md mx-auto flex flex-row items-center justify-between gap-x-4 rounded-2xl bg-primary px-4 py-3 font-mono font-extrabold text-background hover:bg-foreground hover:text-background"
 		onclick={() => {
 			navigator.clipboard.writeText('contact@codevogel.com');
 			toast(

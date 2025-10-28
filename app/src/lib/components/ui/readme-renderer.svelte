@@ -1,5 +1,5 @@
 <script lang="ts">
-   // --- svelte imports ---
+	// --- svelte imports ---
 	import { page } from '$app/state';
 	import { afterNavigate, pushState } from '$app/navigation';
 	import { getScrollContainerContext } from '$lib/context';
@@ -14,7 +14,7 @@
 	// plugins
 	import rehypeRaw from 'rehype-raw';
 	import rehypeSlug from 'rehype-slug';
-	// shiki core 
+	// shiki core
 	import { createHighlighterCoreSync } from 'shiki/core';
 	import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
 	// shiki langs

@@ -147,6 +147,7 @@ export const tools: Tool[] = [
 		description:
 			'Converts patches from the old Novation Circuit format to the new Circuit format, bringing back backwards compatability.',
 		slug: 'circuit-patch-converter',
-		readmeURL: 'https://raw.githubusercontent.com/codevogel/CircuitPatchConverter/refs/heads/main/README.md'
+		readmeURL:
+			'https://raw.githubusercontent.com/codevogel/CircuitPatchConverter/refs/heads/main/README.md'
 	}
 ];

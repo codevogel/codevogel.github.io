@@ -23,5 +23,3 @@
 <section class="flex flex-col justify-center">
 	<Skills {skillGroups} />
 </section>
-
-

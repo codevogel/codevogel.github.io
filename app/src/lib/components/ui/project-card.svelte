@@ -6,12 +6,9 @@
 
 	let { project }: { project: Project } = $props();
 
-
 	const projectRoute = `${project.type}s/${project.slug}`;
-	const href = projectRoute 
-	const imgSrc = `/projects/${projectRoute}/${project.slug}${
-		project.hasGif ? '.gif' : '.png'
-	}`;
+	const href = projectRoute;
+	const imgSrc = `/projects/${projectRoute}/${project.slug}${project.hasGif ? '.gif' : '.png'}`;
 </script>
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
@@ -29,11 +26,7 @@
 			{#if project.youtubeURL}
 				<YoutubeEmbed youtubeURL={project.youtubeURL} />
 			{:else}
-				<img
-					src={imgSrc}
-					alt={`Screenshot of ${project.title}`}
-					class="aspect-video"
-				/>
+				<img src={imgSrc} alt={`Screenshot of ${project.title}`} class="aspect-video" />
 			{/if}
 		</Card.Content>
 		<Card.Footer class="flex flex-row justify-center">

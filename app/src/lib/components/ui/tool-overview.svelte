@@ -1,7 +1,10 @@
 <script lang="ts">
-	import type { Tool } from "$lib/server/data/tools";
+	import type { Tool } from '$lib/server/data/tools';
 
-	const { tools, onSlugClick }: { tools: Tool[], onSlugClick: (slug: string) => (event: MouseEvent) => void } = $props();
+	const {
+		tools,
+		onSlugClick
+	}: { tools: Tool[]; onSlugClick: (slug: string) => (event: MouseEvent) => void } = $props();
 </script>
 
 <section class="flex flex-col px-6 pt-4 pb-64 text-center">

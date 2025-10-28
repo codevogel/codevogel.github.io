@@ -31,13 +31,14 @@ export async function fetchReadmeForSlug(
 
 	if (readme === undefined) {
 		const localURL = `/projects/${getCategoryName(project.type).toLowerCase()}/${slug}/README.md`;
-		console.log(`Could not fetch README from GitHub URL. Falling back to README from Local URL: ${localURL}`);
+		console.log(
+			`Could not fetch README from GitHub URL. Falling back to README from Local URL: ${localURL}`
+		);
 		const res = await fetchFn(localURL);
 		if (res.ok) {
 			readme = await res.text();
 		} else {
-			readme =
-				`# Oops! 😦 \n\nSomething went wrong.\n\nNo \`README.md\` was found for the \`${project.type}\` with slug \`${slug}\`.\n\nMost likely, I forgot to add one!\n\nPlease be so kind to report this through [the Contact page](/contact).`;
+			readme = `# Oops! 😦 \n\nSomething went wrong.\n\nNo \`README.md\` was found for the \`${project.type}\` with slug \`${slug}\`.\n\nMost likely, I forgot to add one!\n\nPlease be so kind to report this through [the Contact page](/contact).`;
 		}
 	}
 	return readme;

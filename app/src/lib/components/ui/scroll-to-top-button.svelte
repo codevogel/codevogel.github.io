@@ -6,7 +6,7 @@
 
 	let scrollContainerContext = getScrollContainerContext();
 	let headerContainerContext = getHeaderContainerContext();
-	
+
 	function scrollToTop() {
 		const scrollContainer = scrollContainerContext();
 		if (!scrollContainer) {
@@ -25,7 +25,11 @@
 	}
 </script>
 
-<Button variant="nav" class="flex flex-col bg-background border-foreground/25 border-1" onclick={() => scrollToTop()}>
+<Button
+	variant="nav"
+	class="flex flex-col border-1 border-foreground/25 bg-background"
+	onclick={() => scrollToTop()}
+>
 	<span>
 		<ChevronsUp />
 	</span>

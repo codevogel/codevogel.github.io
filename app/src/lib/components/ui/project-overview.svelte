@@ -1,8 +1,16 @@
 <script lang="ts">
-	import { getCategoryName } from "$lib/common/data";
-	import { type Project, type ProjectType } from "$lib/server/data/projects";
+	import { getCategoryName } from '$lib/common/data';
+	import { type Project, type ProjectType } from '$lib/server/data/projects';
 
-	const { type, projects, onSlugClick }: { type: ProjectType, projects: Project[], onSlugClick: (slug: string) => (event: MouseEvent) => void } = $props();
+	const {
+		type,
+		projects,
+		onSlugClick
+	}: {
+		type: ProjectType;
+		projects: Project[];
+		onSlugClick: (slug: string) => (event: MouseEvent) => void;
+	} = $props();
 </script>
 
 <section class="flex flex-col px-6 pt-4 pb-64 text-center">
