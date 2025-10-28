@@ -2,9 +2,6 @@
 
 # Liars!
 
-> 🚧 Liars! is still under construction. Hopefully available in game stores
-> soon! 🚧
-
 **_Liars!_** is a physical card game about deception and deduction.
 
 It is a game that is designed for >= 3 players.
