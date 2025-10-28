@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 	}
 
 	if (readme == null) {
-		const res = await fetch(`/tools/${slug}/${slug}.md`);
+		const res = await fetch(`projects/tools/${slug}/README.md`);
 		if (res.ok) {
 			readme = await res.text();
 		} else {
