@@ -108,6 +108,7 @@ export const tools: Tool[] = [
 		description:
 			'A versatile shader for Godot that simulates a faux 3D perspective effect. Perfect for creating depth and immersion in 2D games, this shader can be easily customized to fit your art style and game design needs.',
 		slug: 'faux-3d-perspective-shader',
+		readmeURL: 'https://raw.githubusercontent.com/codevogel/faux-3d-perspective-shader-godot/refs/heads/main/README.md',
 		hasGif: true
 	},
 	{
