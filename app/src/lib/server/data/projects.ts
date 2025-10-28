@@ -126,7 +126,8 @@ export const tools: Tool[] = [
 		shortDescription: 'Creates p5.js projects from the command line.',
 		description:
 			'A command-line tool that streamlines the creation of p5.js projects. With mkp5, you can quickly set up a new p5.js project with a single command.',
-		slug: 'mkp5'
+		slug: 'mkp5',
+		readmeURL: 'https://raw.githubusercontent.com/codevogel/mkp5/refs/heads/main/README.md'
 	},
 	{
 		type: 'tool',
@@ -135,7 +136,8 @@ export const tools: Tool[] = [
 			'pls centralize aliases! Unify your workflow with context-aware alias management.',
 		description:
 			'Project Level Shortcuts (pls) is a command-line tool that allows you to create, manage, and execute custom context-aware aliases for frequently used commands using portable .pls.yml files.',
-		slug: 'pls'
+		slug: 'pls',
+		readmeURL: 'https://raw.githubusercontent.com/codevogel/pls/refs/heads/main/README.md'
 	},
 
 	{
@@ -144,6 +146,7 @@ export const tools: Tool[] = [
 		shortDescription: 'Converts patches between different formats for the Novation Circuit.',
 		description:
 			'Converts patches from the old Novation Circuit format to the new Circuit format, bringing back backwards compatability.',
-		slug: 'circuit-patch-converter'
+		slug: 'circuit-patch-converter',
+		readmeURL: 'https://raw.githubusercontent.com/codevogel/CircuitPatchConverter/refs/heads/main/README.md'
 	}
 ];
