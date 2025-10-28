@@ -15,8 +15,6 @@ export type Project = {
 export type Game = Project & { type: 'game' };
 export type Tool = Project & { type: 'tool' };
 
-
-
 export const games: Game[] = [
 	{
 		type: 'game',
@@ -103,12 +101,23 @@ export const tools: Tool[] = [
 	},
 	{
 		type: 'tool',
+		title: 'Commit for me',
+		shortDescription: 'Generate coventional commit messages with AI.',
+		description:
+			'A command-line tool that leverages AI to generate conventional commit messages based on your code changes. Easily customizable to your own needs. Save time and maintain consistency in your commit history.',
+		slug: 'commit-for-me',
+		readmeURL:
+			'https://raw.githubusercontent.com/codevogel/commit-for-me/refs/heads/main/README.md'
+	},
+	{
+		type: 'tool',
 		title: 'Faux 3D Perspective Shader',
 		shortDescription: 'A shader that creates a faux 3D perspective effect in Godot.',
 		description:
 			'A versatile shader for Godot that simulates a faux 3D perspective effect. Perfect for creating depth and immersion in 2D games, this shader can be easily customized to fit your art style and game design needs.',
 		slug: 'faux-3d-perspective-shader',
-		readmeURL: 'https://raw.githubusercontent.com/codevogel/faux-3d-perspective-shader-godot/refs/heads/main/README.md',
+		readmeURL:
+			'https://raw.githubusercontent.com/codevogel/faux-3d-perspective-shader-godot/refs/heads/main/README.md',
 		hasGif: true
 	},
 	{
@@ -128,6 +137,7 @@ export const tools: Tool[] = [
 			'Project Level Shortcuts (pls) is a command-line tool that allows you to create, manage, and execute custom context-aware aliases for frequently used commands using portable .pls.yml files.',
 		slug: 'pls'
 	},
+
 	{
 		type: 'tool',
 		title: 'Circuit Patch Converter',
