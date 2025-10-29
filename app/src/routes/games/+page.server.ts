@@ -1,4 +1,4 @@
-import { games } from '$lib/server/data/projects';
+import { games } from '$lib/assets/data/projects';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
