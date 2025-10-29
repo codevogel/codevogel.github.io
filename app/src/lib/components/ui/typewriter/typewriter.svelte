@@ -8,13 +8,26 @@
 	let heightStyle = $state('');
 	let renderedLines = $state<MessageLine[]>([]);
 	let cloneLines = $state<MessageLine[]>([]);
+	let mounted = true;
+
+	function assignBaseElement(node: HTMLDivElement) {
+		baseElement = node;
+	}
+
+	function assignCloneElement(node: HTMLDivElement) {
+		cloneElement = node;
+	}
 
 	onMount(() => {
 		warnAboutShortGrowDelay();
 		startTypeWriter();
+		return () => {
+			mounted = false;
+		};
 	});
 
 	$effect(() => {
+		if (!mounted) return;
 		const numLines = renderedLines.length;
 		const scrollHeight = baseElement?.scrollHeight ?? NaN;
 
@@ -48,29 +61,34 @@
 	} = $props();
 
 	async function startTypeWriter() {
+		if (!mounted) return;
 		if (pregrow) {
 			const newHeight = await measureResultingHeightForMessage(message);
 			heightStyle = `height: ${newHeight}px;`;
 		}
 
 		for (const line of message.lines) {
+			if (!mounted) return;
 			await addLine(line);
 		}
 	}
 
 	async function addLine(line: MessageLine) {
+		if (!mounted) return;
 		// Create a reactive line object to hold the currently typed chunks
 		const currentLine = $state({ chunks: [] as MessageLineChunk[], class: line.class });
 
 		if (!pregrow) {
-			// Instantly add content to invisible clone and measure it's height
+			// Instantly add content to invisible clone and measure its height
 			const newHeight = await measureHeightWithCloneForLine(line);
+			if (!mounted) return;
 			// Now that we know the resulting height, animate the base element to that height
 			heightStyle = `height: ${newHeight}px; transition: height ${growDelayMs}ms ease-in-out;`;
 		}
 
 		// Wait for the height animation to finish
 		await delay(growDelayMs);
+		if (!mounted) return;
 
 		// Now start typing the actual line
 		renderedLines = [...renderedLines, currentLine];
@@ -81,7 +99,9 @@
 	}
 
 	async function typeLine(line: MessageLine, currentLine: MessageLine) {
+		if (!mounted) return;
 		for (const chunk of line.chunks) {
+			if (!mounted) return;
 			// Create a reactive chunk object to hold the currently typed text
 			const currentChunk = $state({
 				text: '',
@@ -96,7 +116,9 @@
 	}
 
 	async function typeChunk(chunk: MessageLineChunk, currentChunk: MessageLineChunk) {
+		if (!mounted) return;
 		for (const char of chunk.text) {
+			if (!mounted) return;
 			currentChunk.text += char;
 			await delay(charDelayMs);
 		}
@@ -111,6 +133,7 @@
 			console.error('Clone element not found for height measurement.');
 			return 0;
 		}
+		if (!mounted) return 0;
 		let chunks = line.chunks.map((chunk) => ({
 			text: chunk.text,
 			class: chunk.class,
@@ -119,10 +142,12 @@
 		}));
 		cloneLines = [...cloneLines, { chunks: chunks, class: line.class, style: line.style }];
 		await tick();
+		if (!mounted) return 0;
 		return cloneElement.scrollHeight;
 	}
 
 	async function measureResultingHeightForMessage(message: Message) {
+		if (!mounted) return 0;
 		let lines = message.lines.map((line) => ({
 			chunks: line.chunks.map((chunk) => ({
 				text: chunk.text,
@@ -135,6 +160,7 @@
 		}));
 		cloneLines = lines;
 		await tick();
+		if (!mounted) return 0;
 		return cloneElement?.scrollHeight ?? 0;
 	}
 
@@ -143,6 +169,7 @@
 			console.error('Clone element not found for height recalculation.');
 			return;
 		}
+		if (!mounted) return;
 		// Reset clone height to 0 to force recalculation of scrollHeight
 		// If we don't do this, the scrollHeight stays at the maximum height it reached
 		cloneElement.style.height = '0';
@@ -169,7 +196,7 @@
 	<div
 		class="{baseClass} {message.class ?? ''}"
 		style="{baseStyle} {heightStyle} {message.style ?? ''}"
-		bind:this={baseElement}
+		use:assignBaseElement
 	>
 		{#each renderedLines as line (line)}
 			<span class={line.class ?? ''} style={line.style ?? ''}>
@@ -190,7 +217,7 @@
 		class="{baseClass} {message.class ?? ''}"
 		style="{baseStyle} {heightStyle} {message.style ??
 			''} position: absolute; top: 0; left: 0; visibility: hidden;"
-		bind:this={cloneElement}
+		use:assignCloneElement
 	>
 		{#each cloneLines as line (line)}
 			<span class={line.class ?? ''} style={line.style ?? ''}>
