@@ -4,7 +4,7 @@
 	import { afterNavigate, pushState } from '$app/navigation';
 	import { getScrollContainerContext } from '$lib/context';
 	import { scrollToTopOfContainer } from '$lib/utils/scroll';
-	import type { Project } from '$lib/assets/data/projects';
+	import type { Project, WorkStatus } from '$lib/assets/data/projects';
 
 	// --- exmarkdown imports ---
 	import type { Plugin } from 'svelte-exmarkdown';
@@ -17,10 +17,14 @@
 
 	import rehypeSlug from 'rehype-slug';
 
-	import rehypeProjectStatus from '$lib/rehype/insert-project-status';
-
 	import { ShikiHighlighter } from '$lib/utils/get-shiki-highlighter-instance';
 	import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
+
+	import type { RootContent, Element } from 'hast';
+	import rehypeInsert, {
+		createBlockquote,
+		type RehypeInsertOptions
+	} from '$lib/rehype/rehype-insert';
 
 	let { readme, project }: { readme: string; project: Project } = $props();
 
@@ -52,8 +56,33 @@
 		rehypePlugin: [rehypeSlug]
 	} satisfies Plugin;
 
+	function getStatusMessage(status: WorkStatus): string {
+		switch (status) {
+			case 'abandoned':
+				return "🪦 A beloved project has met its end. Though abandoned, I'm keeping it here as a small monument to the ideas it once held. Perhaps one day, [it might rise again](/contact). 🪦";
+			case 'active':
+				return '🚧 This project is still under construction. I am currently actively building it, so stay tuned! 🚧';
+			case 'postponed':
+				return "⏳ This project is taking a break. It's still on my roadmap, but construction is on hold while I focus on other projects. ⏳";
+			case 'icebox':
+				return "🧊 This project is taking a break. It's in the icebox for now, but I hope to revisit it when the time feels right. 🧊";
+		}
+	}
+
+	const projectStatusOptions: RehypeInsertOptions<WorkStatus> = {
+		position: {
+			type: 'after',
+			selector: (node: RootContent) =>
+				node.type === 'element' && (node as Element).tagName === 'h1'
+		},
+		content: (status) => {
+			return createBlockquote(getStatusMessage(status));
+		},
+		data: project.workStatus
+	};
+
 	const projectStatusPlugin = {
-		rehypePlugin: [rehypeProjectStatus, project.workStatus]
+		rehypePlugin: [rehypeInsert, projectStatusOptions]
 	} satisfies Plugin;
 
 	const plugins: Plugin[] = [gfmPlugin(), shikiPlugin, rawPlugin, slugPlugin, projectStatusPlugin];
