@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getCategoryName } from '$lib/common/data';
-	import { type Project } from '$lib/assets/data/projects';
+	import type { Project, ProjectType } from '$lib/assets/data/projects';
 	import { ArrowDownIcon } from 'lucide-svelte';
 
 	const {
@@ -8,7 +8,7 @@
 		projects,
 		onSlugClick
 	}: {
-		type: 'game' | 'tool';
+		type: ProjectType;
 		projects: Project[];
 		onSlugClick: (slug: string) => (event: MouseEvent) => void;
 	} = $props();
@@ -44,5 +44,7 @@
 			{/if}
 		{/each}
 	</div>
-	<div class="mt-36 flex flex-col items-center text-accent"><ArrowDownIcon/><span>Scroll down to flip through the {categoryName.toLowerCase()}</span></div>
+	<div class="mt-36 flex flex-col items-center text-accent">
+		<ArrowDownIcon /><span>Scroll down to flip through the {categoryName.toLowerCase()}</span>
+	</div>
 </section>

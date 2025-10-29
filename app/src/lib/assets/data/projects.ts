@@ -1,5 +1,7 @@
+export type ProjectType = 'game' | 'tool';
+
 export type Project = {
-	type: 'game' | 'tool';
+	type: ProjectType;
 	title: string;
 	shortDescription: string;
 	description: string;
