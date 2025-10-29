@@ -85,7 +85,7 @@
 	</header>
 	<main
 		id="content-container"
-		class="*:min-h-page *:snap-start *:first:min-h-page-without-header *:first:snap-end *:last:min-h-page-without-footer *:only:min-h-page-without-header-and-footer *:only:snap-start [&.first-section-overflowing>:first-child]:snap-start {firstSectionOverflowing
+		class="[&.first-section-overflowing>:first-child]:snap-start [&>section]:min-h-page [&>section]:snap-start [&>section]:first:min-h-page-without-header [&>section]:first:snap-end [&>section]:last:min-h-page-without-footer [&>section]:only:min-h-page-without-header-and-footer [&>section]:only:snap-start {firstSectionOverflowing
 			? 'first-section-overflowing'
 			: ''}"
 		{@attach attachContainer((node) => (contentContainer = node))}

@@ -87,7 +87,7 @@
 
 	const plugins: Plugin[] = [gfmPlugin(), shikiPlugin, rawPlugin, slugPlugin, projectStatusPlugin];
 
-	function interceptLinkClicks(e: MouseEvent & { currentTarget: EventTarget & HTMLDivElement }) {
+	function interceptLinkClicks(e: MouseEvent & { currentTarget: EventTarget & HTMLElement }) {
 		const a = (e.target as HTMLElement).closest('a');
 		if (a) {
 			const hash = a.getAttribute('href')?.split('#')[1];
@@ -107,10 +107,10 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_interactive_supports_focus -->
-<div
+<section
 	class="mx-8 my-16 prose snap-none dark:prose-invert"
 	onclick={(e) => interceptLinkClicks(e)}
 	role="link"
 >
 	<Markdown md={readme} {plugins} />
-</div>
+</section>
