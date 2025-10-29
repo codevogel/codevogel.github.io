@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getCategoryName, getImagePath } from '$lib/assets/data/projects';
 	import type { Project, ProjectType } from '$lib/assets/data/projects';
+	import Section from '$lib/components/ui/section.svelte';
 	import { ArrowDownIcon } from 'lucide-svelte';
 
 	const {
@@ -16,7 +17,7 @@
 	const categoryName = $derived(getCategoryName(type));
 </script>
 
-<section class="flex flex-col px-6 pt-4 pb-80 text-center">
+<Section class="px-6 pt-4 pb-80 text-center">
 	<h1 class="mb-2">{categoryName} overview</h1>
 	<p class="subscript mb-4">
 		Click a {type} in the overview to jump to that project, or swipe down to scroll through them.
@@ -47,4 +48,4 @@
 	<div class="mt-36 flex flex-col items-center text-accent">
 		<ArrowDownIcon /><span>Scroll down to flip through the {categoryName.toLowerCase()}</span>
 	</div>
-</section>
+</Section>

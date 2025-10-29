@@ -25,6 +25,7 @@
 		createBlockquote,
 		type RehypeInsertOptions
 	} from '$lib/rehype/rehype-insert';
+	import Section from '$lib/components/ui/section.svelte';
 
 	let { readme, project }: { readme: string; project: Project } = $props();
 
@@ -90,27 +91,30 @@
 	function interceptLinkClicks(e: MouseEvent & { currentTarget: EventTarget & HTMLElement }) {
 		const a = (e.target as HTMLElement).closest('a');
 		if (a) {
-			const hash = a.getAttribute('href')?.split('#')[1];
-			if (hash) {
-				e.preventDefault();
-				const targetElement = document.getElementById(hash);
-				const scrollContainer = scrollContainerContext();
-				if (targetElement && scrollContainer) {
-					scrollToTopOfContainer(scrollContainer, targetElement);
-				}
-				// eslint-disable-next-line svelte/no-navigation-without-resolve
-				pushState(`#${hash}`, {});
+			handleHashNavigation(a, e);
+		}
+	}
+
+	function handleHashNavigation(a: HTMLElement, event: MouseEvent) {
+		const hash = a.getAttribute('href')?.split('#')[1];
+		if (hash) {
+			event.preventDefault();
+			const targetElement = document.getElementById(hash);
+			const scrollContainer = scrollContainerContext();
+			if (targetElement && scrollContainer) {
+				scrollToTopOfContainer(scrollContainer, targetElement);
 			}
+
+			// eslint-disable-next-line svelte/no-navigation-without-resolve
+			pushState(`#${hash}`, {});
 		}
 	}
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<!-- svelte-ignore a11y_interactive_supports_focus -->
-<section
+<Section
 	class="mx-8 my-8 prose snap-none dark:prose-invert"
 	onclick={(e) => interceptLinkClicks(e)}
 	role="link"
 >
 	<Markdown md={readme} {plugins} />
-</section>
+</Section>
