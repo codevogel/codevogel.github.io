@@ -73,7 +73,7 @@
 
 <div
 	id="scroll-container"
-	class="h-dvh max-h-dvh snap-y snap-mandatory overflow-y-auto"
+	class="h-dvh max-h-dvh snap-y snap-mandatory overflow-y-auto bg-gradient-to-t from-accent/30 to-background/30"
 	{@attach attachContainer((node) => (scrollContainer = node))}
 >
 	<header
