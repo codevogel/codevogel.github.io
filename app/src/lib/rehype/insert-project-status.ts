@@ -10,8 +10,6 @@ export default function rehypeProjectStatus(
 	workStatus: 'active' | 'postponed' | 'icebox' | 'abandoned' | undefined
 ) {
 	return (tree: Root) => {
-		console.log(`Inserting project status for workStatus='${workStatus}'`);
-		console.log(`Tree: ${tree}`);
 		// If nothing to insert, exit early.
 		if (workStatus === undefined) return;
 
