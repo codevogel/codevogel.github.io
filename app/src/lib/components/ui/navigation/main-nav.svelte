@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/shadcn-svelte/ui/button/button.svelte';
-	import { pages } from '$lib/routes/routes';
+	import { pages } from '$lib/assets/routes';
 </script>
 
 <nav class="flex flex-row justify-center">
