@@ -1,28 +1,9 @@
-<script lang="ts">
-	import ProjectOverview from '$lib/components/ui/project-overview.svelte';
-	import ProjectList from '$lib/components/ui/project-list.svelte';
-	import { getScrollContainerContext } from '$lib/context';
-	import { scrollToTopOfContainer } from '$lib/utils/scroll';
-	import { pushState } from '$app/navigation';
+<script>
+	import ProjectPage from '$lib/components/ui/project-page.svelte';
 
 	let { data } = $props();
-	const tools = $derived(data.tools);
 
-	let scrollContainerContext = getScrollContainerContext();
-
-	function onSlugClick(slug: string) {
-		return (event: MouseEvent) => {
-			event.preventDefault();
-			const targetElement = document.getElementById(slug);
-			const scrollContainer = scrollContainerContext();
-			if (targetElement && scrollContainer) {
-				scrollToTopOfContainer(scrollContainer, targetElement);
-			}
-			// eslint-disable-next-line svelte/no-navigation-without-resolve
-			pushState(`/tools#${slug}`, {});
-		};
-	}
+	const projects = $derived(data.projects);
 </script>
 
-<ProjectOverview type="tool" projects={tools} {onSlugClick} />
-<ProjectList projects={tools} />
+<ProjectPage {projects} projectType="tool" />
