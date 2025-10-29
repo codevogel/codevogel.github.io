@@ -1,20 +1,23 @@
 <script lang="ts">
 	import { getCategoryName } from '$lib/common/data';
-	import { type Project, type ProjectType } from '$lib/server/data/projects';
+	import { type Project } from '$lib/server/data/projects';
+	import { ArrowDownIcon } from 'lucide-svelte';
 
 	const {
 		type,
 		projects,
 		onSlugClick
 	}: {
-		type: ProjectType;
+		type: 'game' | 'tool';
 		projects: Project[];
 		onSlugClick: (slug: string) => (event: MouseEvent) => void;
 	} = $props();
+
+	const categoryName = $derived(getCategoryName(type));
 </script>
 
-<section class="flex flex-col px-6 pt-4 pb-64 text-center">
-	<h1 class="mb-2">{getCategoryName(type)} overview</h1>
+<section class="flex flex-col px-6 pt-4 pb-80 text-center">
+	<h1 class="mb-2">{categoryName} overview</h1>
 	<p class="subscript mb-4">
 		Click a {type} in the overview to jump to that project, or swipe down to scroll through them.
 	</p>
@@ -41,4 +44,5 @@
 			{/if}
 		{/each}
 	</div>
+	<div class="mt-36 flex flex-col items-center text-accent"><ArrowDownIcon/><span>Scroll down to flip through the {categoryName.toLowerCase()}</span></div>
 </section>
