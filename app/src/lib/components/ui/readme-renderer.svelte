@@ -108,7 +108,7 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_interactive_supports_focus -->
 <section
-	class="mx-8 my-16 prose snap-none dark:prose-invert"
+	class="mx-8 my-8 prose snap-none dark:prose-invert"
 	onclick={(e) => interceptLinkClicks(e)}
 	role="link"
 >
