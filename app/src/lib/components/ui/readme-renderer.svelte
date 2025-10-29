@@ -14,18 +14,15 @@
 	// --- rehype imports ---
 	// plugins
 	import rehypeRaw from 'rehype-raw';
+
 	import rehypeSlug from 'rehype-slug';
-	// shiki core
-	import { createHighlighterCoreSync } from 'shiki/core';
-	import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
-	// shiki langs
-	import ts from 'shiki/langs/typescript.mjs';
-	import gdscript from 'shiki/langs/gdscript.mjs';
-	import kanagawa from 'shiki/themes/kanagawa-wave.mjs';
-	import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
+
 	import rehypeProjectStatus from '$lib/rehype/insert-project-status';
 
-	let { readme, project }: { readme: string, project: Project } = $props();
+	import { ShikiHighlighter } from '$lib/utils/get-shiki-highlighter-instance';
+	import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
+
+	let { readme, project }: { readme: string; project: Project } = $props();
 
 	let scrollContainerContext = getScrollContainerContext();
 
@@ -42,11 +39,7 @@
 	const shikiPlugin = {
 		rehypePlugin: [
 			rehypeShikiFromHighlighter,
-			createHighlighterCoreSync({
-				themes: [kanagawa],
-				langs: [ts, gdscript],
-				engine: createJavaScriptRegexEngine()
-			}),
+			ShikiHighlighter.getInstance(),
 			{ theme: 'kanagawa-wave' }
 		]
 	} satisfies Plugin;
