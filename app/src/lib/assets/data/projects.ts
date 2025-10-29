@@ -15,6 +15,10 @@ export type Project = {
 export type Game = Project & { type: 'game' };
 export type Tool = Project & { type: 'tool' };
 
+export function getCategoryName(type: ProjectType): string {
+	return type.charAt(0).toUpperCase() + type.slice(1) + 's';
+}
+
 export const games: Game[] = [
 	{
 		type: 'game',

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getCategoryName } from '$lib/common/data';
+	import { getCategoryName } from '$lib/assets/data/projects';
 	import type { Project, ProjectType } from '$lib/assets/data/projects';
 	import { ArrowDownIcon } from 'lucide-svelte';
 

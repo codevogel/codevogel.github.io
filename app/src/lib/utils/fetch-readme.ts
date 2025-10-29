@@ -1,5 +1,5 @@
-import { getCategoryName } from '$lib/common/data';
 import type { Project } from '$lib/assets/data/projects';
+import { getCategoryName } from '$lib/assets/data/projects';
 
 export async function fetchReadmeForSlug(
 	project: Project,
