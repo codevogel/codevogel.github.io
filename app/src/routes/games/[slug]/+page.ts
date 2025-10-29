@@ -1,5 +1,5 @@
-import { projects } from '$lib/server/data/projects';
-import { fetchReadmeForSlug } from '$lib/server/data/fetch-readme';
+import { projects } from '$lib/assets/data/projects';
+import { fetchReadmeForSlug } from '$lib/utils/fetch-readme';
 import type { PageLoad } from './$types';
 import { error } from '@sveltejs/kit';
 

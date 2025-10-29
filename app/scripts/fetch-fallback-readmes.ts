@@ -1,4 +1,4 @@
-import { projects } from '../src/lib/server/data/projects.ts';
+import { projects } from '../src/lib/assets/data/projects.ts';
 import { existsSync, writeFileSync } from 'fs';
 
 async function main() {

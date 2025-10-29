@@ -1,5 +1,5 @@
 import { getCategoryName } from '$lib/common/data';
-import type { Project } from '$lib/server/data/projects';
+import type { Project } from '$lib/assets/data/projects';
 
 export async function fetchReadmeForSlug(
 	project: Project,
@@ -31,6 +31,8 @@ export async function fetchReadmeForSlug(
 			return await res.text();
 		}
 	}
-	console.error(`Failed to fetch fallback README for project type '${project.type}' with slug '${slug}'.`);
+	console.error(
+		`Failed to fetch fallback README for project type '${project.type}' with slug '${slug}'.`
+	);
 	return `# Oops! 😦 \n\nSomething went wrong.\n\nNo \`README.md\` was found for the \`${project.type}\` with slug \`${slug}\`.\n\nMost likely, I forgot to add one!\n\nPlease be so kind to report this through [the Contact page](/contact).`;
 }

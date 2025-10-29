@@ -4,7 +4,7 @@
 	import { afterNavigate, pushState } from '$app/navigation';
 	import { getScrollContainerContext } from '$lib/context';
 	import { scrollToTopOfContainer } from '$lib/common/scroll.js';
-	import type { Project } from '$lib/server/data/projects';
+	import type { Project } from '$lib/assets/data/projects';
 
 	// --- exmarkdown imports ---
 	import type { Plugin } from 'svelte-exmarkdown';
