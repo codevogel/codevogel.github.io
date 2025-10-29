@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ReadmeRenderer from '$lib/components/ui/readme-renderer.svelte';
+	import ProjectDetail from '$lib/components/ui/project-detail.svelte';
 
 	let { data } = $props();
 
@@ -7,4 +7,4 @@
 	let project = $derived(data.project);
 </script>
 
-<ReadmeRenderer {readme} {project} />
+<ProjectDetail {readme} {project} />
