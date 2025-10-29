@@ -21,6 +21,10 @@ export function getCategoryName(type: ProjectType): string {
 	return type.charAt(0).toUpperCase() + type.slice(1) + 's';
 }
 
+export function getImagePath(project: Project): string {
+	return `/projects/${getCategoryName(project.type).toLowerCase()}/${project.slug}/${project.slug}${project.hasGif ? '.gif' : '.png'}`;
+}
+
 export const games: Game[] = [
 	{
 		type: 'game',

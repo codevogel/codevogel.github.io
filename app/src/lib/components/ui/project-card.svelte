@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Card from '$lib/components/shadcn-svelte/ui/card/index.js';
-	import { type Project } from '$lib/assets/data/projects';
+	import { getImagePath, type Project } from '$lib/assets/data/projects';
 	import { ExternalLinkIcon } from 'lucide-svelte';
 	import YoutubeEmbed from './youtube-embed.svelte';
 
@@ -8,7 +8,6 @@
 
 	const projectRoute = `${project.type}s/${project.slug}`;
 	const href = projectRoute;
-	const imgSrc = `/projects/${projectRoute}/${project.slug}${project.hasGif ? '.gif' : '.png'}`;
 </script>
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
@@ -26,7 +25,11 @@
 			{#if project.youtubeURL}
 				<YoutubeEmbed youtubeURL={project.youtubeURL} />
 			{:else}
-				<img src={imgSrc} alt={`Screenshot of ${project.title}`} class="aspect-video" />
+				<img
+					src={getImagePath(project)}
+					alt={`${project.title} preview image`}
+					class="aspect-video"
+				/>
 			{/if}
 		</Card.Content>
 		<Card.Footer class="flex flex-row justify-center">

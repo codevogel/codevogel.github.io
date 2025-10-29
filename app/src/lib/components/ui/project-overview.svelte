@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getCategoryName } from '$lib/assets/data/projects';
+	import { getCategoryName, getImagePath } from '$lib/assets/data/projects';
 	import type { Project, ProjectType } from '$lib/assets/data/projects';
 	import { ArrowDownIcon } from 'lucide-svelte';
 
@@ -33,7 +33,7 @@
 				</div>
 				<div class="aspect-video">
 					<img
-						src={`/projects/${project.type}s/${project.slug}/${project.slug}${project.hasGif ? '.gif' : '.png'}`}
+						src={getImagePath(project)}
 						class="rounded-lg"
 						alt={`${project.title} preview image`}
 					/>
