@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { scrollToTopOfContainer } from '$lib/common/scroll';
+	import { scrollToTopOfContainer } from '$lib/utils/scroll';
 	import { getHeaderContainerContext, getScrollContainerContext } from '$lib/context';
 	import { ChevronsUp } from 'lucide-svelte';
 
@@ -25,7 +25,7 @@
 </script>
 
 <button
-	class="flex flex-col border-1 border-foreground/25 bg-background rounded-lg p-3 text-primary hover:border-white"
+	class="flex flex-col rounded-lg border-1 border-foreground/25 bg-background p-3 text-primary hover:border-white"
 	onclick={() => scrollToTop()}
 >
 	<span>

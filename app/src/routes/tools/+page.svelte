@@ -2,7 +2,7 @@
 	import ProjectOverview from '$lib/components/ui/project-overview.svelte';
 	import ProjectList from '$lib/components/ui/project-list.svelte';
 	import { getScrollContainerContext } from '$lib/context';
-	import { scrollToTopOfContainer } from '$lib/common/scroll.js';
+	import { scrollToTopOfContainer } from '$lib/utils/scroll';
 	import { pushState } from '$app/navigation';
 
 	let { data } = $props();

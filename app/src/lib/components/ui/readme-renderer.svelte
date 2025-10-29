@@ -3,7 +3,7 @@
 	import { page } from '$app/state';
 	import { afterNavigate, pushState } from '$app/navigation';
 	import { getScrollContainerContext } from '$lib/context';
-	import { scrollToTopOfContainer } from '$lib/common/scroll.js';
+	import { scrollToTopOfContainer } from '$lib/utils/scroll';
 	import type { Project } from '$lib/assets/data/projects';
 
 	// --- exmarkdown imports ---
