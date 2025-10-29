@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { scrollToTopOfContainer } from '$lib/common/scroll';
-	import Button from '$lib/components/shadcn-svelte/ui/button/button.svelte';
 	import { getHeaderContainerContext, getScrollContainerContext } from '$lib/context';
 	import { ChevronsUp } from 'lucide-svelte';
 
@@ -25,12 +24,11 @@
 	}
 </script>
 
-<Button
-	variant="nav"
-	class="flex flex-col border-1 border-foreground/25 bg-background"
+<button
+	class="flex flex-col border-1 border-foreground/25 bg-background rounded-lg p-3 text-primary hover:border-white"
 	onclick={() => scrollToTop()}
 >
 	<span>
 		<ChevronsUp />
 	</span>
-</Button>
+</button>
