@@ -11,12 +11,7 @@
 
 	onMount(() => {
 		warnAboutShortGrowDelay();
-
-		const resizeHandler = () => recalculateHeight();
-		typeMessage();
-
-		window.addEventListener('resize', resizeHandler);
-		return () => window.removeEventListener('resize', resizeHandler);
+		startTypeWriter();
 	});
 
 	$effect(() => {
@@ -52,33 +47,37 @@
 		growDelayMs?: number;
 	} = $props();
 
-	async function typeMessage() {
+	async function startTypeWriter() {
 		if (pregrow) {
 			const newHeight = await measureResultingHeightForMessage(message);
 			heightStyle = `height: ${newHeight}px;`;
 		}
 
 		for (const line of message.lines) {
-			// Create a reactive line object to hold the currently typed chunks
-			const currentLine = $state({ chunks: [] as MessageLineChunk[], class: line.class });
-
-			if (!pregrow) {
-				// Instantly add content to invisible clone and measure it's height
-				const newHeight = await measureHeightWithCloneForLine(line);
-				// Now that we know the resulting height, animate the base element to that height
-				heightStyle = `height: ${newHeight}px; transition: height ${growDelayMs}ms ease-in-out;`;
-			}
-
-			// Wait for the height animation to finish
-			await delay(growDelayMs);
-
-			// Now start typing the actual line
-			renderedLines = [...renderedLines, currentLine];
-			await typeLine(line, currentLine);
-
-			// Wait this line's delay before starting the next line
-			await delay(line.delay ?? defaultLineDelayMs);
+			await addLine(line);
 		}
+	}
+
+	async function addLine(line: MessageLine) {
+		// Create a reactive line object to hold the currently typed chunks
+		const currentLine = $state({ chunks: [] as MessageLineChunk[], class: line.class });
+
+		if (!pregrow) {
+			// Instantly add content to invisible clone and measure it's height
+			const newHeight = await measureHeightWithCloneForLine(line);
+			// Now that we know the resulting height, animate the base element to that height
+			heightStyle = `height: ${newHeight}px; transition: height ${growDelayMs}ms ease-in-out;`;
+		}
+
+		// Wait for the height animation to finish
+		await delay(growDelayMs);
+
+		// Now start typing the actual line
+		renderedLines = [...renderedLines, currentLine];
+		await typeLine(line, currentLine);
+
+		// Wait this line's delay before starting the next line
+		await delay(line.delay ?? defaultLineDelayMs);
 	}
 
 	async function typeLine(line: MessageLine, currentLine: MessageLine) {
@@ -162,6 +161,8 @@
 		}
 	}
 </script>
+
+<svelte:window onresize={recalculateHeight} />
 
 <div class="relative">
 	<!-- Actual visible typewriter element -->
