@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Card from '$lib/components/shadcn-svelte/ui/card/index.js';
-	import { type Project } from '$lib/server/data/projects';
+	import { type Project } from '$lib/assets/data/projects';
 	import { ExternalLinkIcon } from 'lucide-svelte';
 	import YoutubeEmbed from './youtube-embed.svelte';
 
@@ -19,7 +19,7 @@
 	<Card.Root>
 		<Card.Header>
 			<Card.Title class="hover-altered text-xl"
-				>{project.title}{project.wip ? ' [WIP]' : ''}</Card.Title
+				>{project.title}{project.workStatus ? ' [WIP]' : ''}</Card.Title
 			>
 		</Card.Header>
 		<Card.Content class="flex flex-col gap-y-4 px-0">

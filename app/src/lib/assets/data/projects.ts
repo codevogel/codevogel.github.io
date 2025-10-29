@@ -7,10 +7,12 @@ export type Project = {
 	description: string;
 	slug: string;
 	hasGif?: boolean;
-	workStatus?: 'active' | 'postponed' | 'icebox' | 'abandoned';
+	workStatus?: WorkStatus;
 	youtubeURL?: string;
 	readmeURL?: string;
 };
+
+export type WorkStatus = 'active' | 'postponed' | 'icebox' | 'abandoned';
 
 export type Game = Project & { type: 'game' };
 export type Tool = Project & { type: 'tool' };
