@@ -7,7 +7,7 @@
 	let {
 		project,
 		class: className = '',
-		baseClass = 'no-underline group'
+		baseClass = 'no-underline group max-w-md'
 	}: { project: Project; class?: string; baseClass?: string } = $props();
 
 	const projectRoute = `${project.type}s/${project.slug}`;
