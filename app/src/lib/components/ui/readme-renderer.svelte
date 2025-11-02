@@ -115,7 +115,7 @@
 </script>
 
 <Section
-	class="mx-auto my-8 prose dark:prose-invert"
+	class="mx-auto my-8 prose px-8 dark:prose-invert"
 	onclick={(e) => interceptLinkClicks(e)}
 	role="link"
 >
