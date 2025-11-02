@@ -25,7 +25,7 @@
 </script>
 
 <button
-	class="transition-std flex flex-col rounded-lg border-1 border-zinc-700 bg-accent/40 p-3 hover:cursor-pointer hover:border-zinc-500 hover:bg-accent hover:text-primary"
+	class="transition-std flex flex-col rounded-lg border-1 border-accent bg-accent/40 p-3 hover:cursor-pointer hover:border-zinc-500 hover:bg-accent hover:text-primary"
 	onclick={() => scrollToTop()}
 >
 	<span>

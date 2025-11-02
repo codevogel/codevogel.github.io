@@ -16,9 +16,9 @@
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 <a id={project.slug} {href} class="{baseClass} {className}" data-sveltekit-preload-data="false">
-	<Card.Root class="group-hover:bg-accent">
+	<Card.Root class="transition-std group-hover:bg-accent">
 		<Card.Header>
-			<Card.Title class="group-hover:text-primary">
+			<Card.Title class="transition-std group-hover:text-primary">
 				<h2>{project.title}{project.workStatus ? ' [WIP]' : ''}</h2>
 			</Card.Title>
 		</Card.Header>
@@ -35,7 +35,7 @@
 		</Card.Content>
 		<Card.Footer class="flex flex-row justify-center gap-x-2">
 			<Card.Description>{project.description}</Card.Description>
-			<div class="group-hover:text-primary">
+			<div class="transition-std group-hover:text-primary">
 				<ExternalLinkIcon size={24} />
 			</div>
 		</Card.Footer>
