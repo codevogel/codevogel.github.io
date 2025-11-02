@@ -77,6 +77,9 @@
 				node.type === 'element' && (node as Element).tagName === 'h1'
 		},
 		content: (status) => {
+			if (!status) {
+				return null;
+			}
 			return createBlockquote(getStatusMessage(status));
 		},
 		data: project.workStatus
@@ -112,7 +115,7 @@
 </script>
 
 <Section
-	class="mx-8 my-8 prose snap-none dark:prose-invert"
+	class="mx-auto my-8 prose dark:prose-invert"
 	onclick={(e) => interceptLinkClicks(e)}
 	role="link"
 >
