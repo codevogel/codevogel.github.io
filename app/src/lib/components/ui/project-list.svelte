@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ui/project-card.svelte';
-	import type { Project } from '$lib/server/data/projects';
+	import type { Project } from '$lib/assets/data/projects';
 	import { ArrowDownIcon, ArrowUpIcon } from 'lucide-svelte';
 
 	const { projects } = $props<{
