@@ -182,4 +182,8 @@
 		@apply text-sm italic;
 		color: color-mix(in oklab, var(--color-foreground) 40%, transparent);
 	}
+
+	.transition-std {
+		@apply transition-all duration-300 ease-in-out;
+	}
 }
