@@ -13,7 +13,7 @@ export async function fetchReadmeForSlug(
 		const res = await fetchFn(project.readmeURL);
 		if (res.ok) {
 			console.log(`Successfully fetched README from GitHub URL: ${project.readmeURL}`);
-			const baseRawURL = `https://raw.githubusercontent.com/codevogel/${slug}/refs/heads/main/'`;
+			const baseRawURL = `https://raw.githubusercontent.com/codevogel/${slug}/refs/heads/main/`;
 			readme = await res.text();
 			// Adjust relative paths in the README to absolute URLs
 			return readme.replace(
