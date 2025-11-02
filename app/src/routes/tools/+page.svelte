@@ -1,9 +1,12 @@
-<script>
-	import ProjectPage from '$lib/components/ui/project-page.svelte';
+<script lang="ts">
+	import type { ProjectType } from '$lib/assets/data/projects';
+	import ProjectOverview from '$lib/components/ui/project-overview.svelte';
 
 	let { data } = $props();
 
 	const projects = $derived(data.projects);
+
+	const type: ProjectType = 'tool';
 </script>
 
-<ProjectPage {projects} projectType="tool" />
+<ProjectOverview {type} {projects} />
