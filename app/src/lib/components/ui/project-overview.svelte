@@ -15,7 +15,7 @@
 	const categoryName = $derived(getCategoryName(type));
 </script>
 
-<Section class="px-6 pt-4 pb-8 text-center">
+<Section class="items-center px-6 pt-4 pb-8">
 	<h1 class="mb-2">{categoryName}</h1>
 	<div class="subscript mb-4">
 		<p>Here, you can find all the {categoryName.toLowerCase()} I've worked on!</p>
