@@ -25,4 +25,3 @@
 </script>
 
 <ProjectOverview type={projectType} {projects} {onSlugClick} />
-<ProjectList {projects} />

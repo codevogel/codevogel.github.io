@@ -7,7 +7,7 @@
 	let {
 		project,
 		class: className = '',
-		baseClass = 'no-underline [&:hover_.hover-altered]:text-primary [&>:first-child:hover]:border-foreground/20'
+		baseClass = 'no-underline group'
 	}: { project: Project; class?: string; baseClass?: string } = $props();
 
 	const projectRoute = `${project.type}s/${project.slug}`;
@@ -15,12 +15,12 @@
 </script>
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
-<a {href} class="{baseClass} {className}" data-sveltekit-preload-data="false">
-	<Card.Root>
+<a id={project.slug} {href} class="{baseClass} {className}" data-sveltekit-preload-data="false">
+	<Card.Root class="group-hover:bg-accent">
 		<Card.Header>
-			<Card.Title class="hover-altered text-xl"
-				>{project.title}{project.workStatus ? ' [WIP]' : ''}</Card.Title
-			>
+			<Card.Title class="group-hover:text-primary">
+				<h2>{project.title}{project.workStatus ? ' [WIP]' : ''}</h2>
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="flex flex-col gap-y-4 px-0">
 			{#if project.youtubeURL}
@@ -33,10 +33,10 @@
 				/>
 			{/if}
 		</Card.Content>
-		<Card.Footer class="flex flex-row justify-center">
+		<Card.Footer class="flex flex-row justify-center gap-x-2">
 			<Card.Description>{project.description}</Card.Description>
-			<div class="hover-altered rounded-2xl p-4 hover:bg-accent">
-				<ExternalLinkIcon />
+			<div class="group-hover:text-primary">
+				<ExternalLinkIcon size={24} />
 			</div>
 		</Card.Footer>
 	</Card.Root>
