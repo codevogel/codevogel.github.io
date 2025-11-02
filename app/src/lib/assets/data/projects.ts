@@ -89,7 +89,7 @@ export const games: Game[] = [
 	},
 	{
 		type: 'game',
-		title: 'Liars',
+		title: 'Liars!',
 		shortDescription: 'A physical card game about deception and deduction.',
 		description:
 			'A social trivia game where players bluff, and try to catch others in their lies.',
