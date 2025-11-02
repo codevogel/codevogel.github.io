@@ -6,7 +6,7 @@
 		lines: [
 			{
 				chunks: [{ text: 'Hi!' }],
-				class: 'text-3xl font-bold'
+				class: 'text-3xl font-bold md:text-5xl'
 			},
 			{
 				chunks: [
@@ -43,9 +43,17 @@
 </script>
 
 <div class="grid h-80 grid-cols-1 place-content-end justify-items-center px-8">
-	<Typewriter {message} baseClass="max-w-72 min-w-72 bg-accent rounded-lg p-4" pregrow={false} />
+	<Typewriter
+		{message}
+		baseClass="max-w-72 min-w-72 bg-accent rounded-lg p-4 md:text-lg md:max-w-90 md:min-w-90"
+		pregrow={false}
+	/>
 	<div
 		class="h-0 w-0 border-t-[15px] border-r-[15px] border-l-[15px] border-accent border-r-transparent border-l-transparent"
 	></div>
-	<img src="/logos/svg/logo-codevogel-head.svg" class="mt-4 w-24" alt="codevogel logo head" />
+	<img
+		src="/logos/svg/logo-codevogel-head.svg"
+		class="mt-4 w-24 md:mt-16 md:scale-150"
+		alt="codevogel logo head"
+	/>
 </div>

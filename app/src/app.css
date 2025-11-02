@@ -179,7 +179,7 @@
 	}
 
 	.subscript {
-		@apply text-sm italic;
+		@apply text-sm italic md:text-base;
 		color: color-mix(in oklab, var(--color-foreground) 40%, transparent);
 	}
 

@@ -17,11 +17,11 @@
 
 <Section class="items-center px-6 pt-4 pb-8">
 	<h1 class="mb-2">{categoryName}</h1>
-	<div class="subscript mb-4">
+	<div class="subscript mb-4 md:mb-8 lg:mb-12">
 		<p>Here, you can find all the {categoryName.toLowerCase()} I've worked on!</p>
 		<p>Click on a {type} to find out more about it.</p>
 	</div>
-	<div class="flex flex-col gap-y-8 text-start">
+	<div class="flex flex-col gap-y-8 text-start lg:grid lg:grid-cols-2 lg:gap-16">
 		{#each projects as project, i (i)}
 			<ProjectCard {project} />
 		{/each}

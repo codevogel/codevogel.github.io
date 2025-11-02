@@ -7,7 +7,7 @@
 	}
 </script>
 
-<div class="mx-auto max-w-sm rounded-xl border-[.1px] border-accent p-4 text-center">
+<div class="mx-auto rounded-xl border-[.1px] border-accent p-4 text-center md:p-8 md:text-xl">
 	<p>
 		<span class="flex flex-row justify-center gap-x-4">
 			<span class="font-serif italic">/ˈkoːdəˌvoːɣəl/</span>

@@ -1,14 +1,23 @@
 <script lang="ts">
 	import * as Carousel from '$lib/components/shadcn-svelte/ui/carousel/index.js';
-	import JobCard from './job-card.svelte';
+	import JobCard from '$lib/components/ui/job-card.svelte';
 	import { type CarouselAPI } from '$lib/components/shadcn-svelte/ui/carousel/context';
-	import Button from '../shadcn-svelte/ui/button/button.svelte';
-	import type { Job } from '$lib/server/data/jobs';
+	import { Button } from '$lib/components/shadcn-svelte/ui/button';
+	import type { Job } from '$lib/assets/data/jobs';
+	import { DotIcon } from 'lucide-svelte';
 
 	let api = $state<CarouselAPI>();
-	let viewingCurrent = $state(true);
+	let current = $state(0);
+	const count = $derived(api ? api.scrollSnapList().length : 0);
 
-	let carouselButtonText = $derived(viewingCurrent ? 'View Past Jobs' : 'View Current Jobs');
+	$effect(() => {
+		if (api) {
+			current = api.selectedScrollSnap();
+			api.on('select', () => {
+				current = api!.selectedScrollSnap();
+			});
+		}
+	});
 
 	let { jobs }: { jobs: Job[] } = $props();
 
@@ -26,16 +35,16 @@
 
 <div class="flex flex-col justify-center gap-y-8 text-center">
 	<Carousel.Root opts={{ loop: true }} setApi={(emblaAPI) => (api = emblaAPI)}>
-		<Carousel.Content>
-			<Carousel.Item class="flex flex-col justify-start gap-y-2">
+		<Carousel.Content class="">
+			<Carousel.Item class="flex flex-col gap-y-2">
 				<h2>Current Jobs</h2>
-				<div class="flex flex-col gap-y-2">
+				<div class="flex flex-col items-center gap-y-2">
 					{#each currentJobs as job, i (i)}
 						<JobCard {job} />
 					{/each}
 				</div>
 			</Carousel.Item>
-			<Carousel.Item class="flex flex-col justify-center gap-y-2">
+			<Carousel.Item class="flex flex-col items-center gap-y-2">
 				<h2>Past Jobs</h2>
 				<div class="flex flex-col gap-y-2">
 					{#each pastJobs as job, i (i)}
@@ -45,12 +54,15 @@
 			</Carousel.Item>
 		</Carousel.Content>
 	</Carousel.Root>
-	<Button
-		onclick={() => {
-			api?.scrollNext();
-			viewingCurrent = !viewingCurrent;
-		}}
-		variant="outline"
-		class="mt-2 max-w-32 place-self-center">{carouselButtonText}</Button
-	>
+
+	<div class="flex flex-row justify-center">
+		<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+		{#each Array(count) as _, i (i)}
+			<DotIcon
+				onclick={() => api?.scrollTo(i)}
+				class={i !== current ? 'text-accent' : ''}
+				size={36}
+			/>
+		{/each}
+	</div>
 </div>

@@ -3,7 +3,7 @@
 
 	let {
 		children,
-		class: className,
+		class: className = '',
 		baseClass = 'flex flex-col',
 		onclick = () => {},
 		role = '',
