@@ -4,17 +4,18 @@
 	import { ExternalLinkIcon } from 'lucide-svelte';
 	import YoutubeEmbed from './youtube-embed.svelte';
 
-	let { project }: { project: Project } = $props();
+	let {
+		project,
+		class: className = '',
+		baseClass = 'no-underline [&:hover_.hover-altered]:text-primary [&>:first-child:hover]:border-foreground/20'
+	}: { project: Project; class?: string; baseClass?: string } = $props();
 
 	const projectRoute = `${project.type}s/${project.slug}`;
 	const href = projectRoute;
 </script>
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
-<a
-	{href}
-	class="px-6 no-underline [&:hover_.hover-altered]:text-primary [&>:first-child:hover]:border-foreground/20"
->
+<a {href} class="{baseClass} {className}" data-sveltekit-preload-data="false">
 	<Card.Root>
 		<Card.Header>
 			<Card.Title class="hover-altered text-xl"
