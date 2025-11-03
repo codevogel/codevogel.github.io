@@ -12,6 +12,10 @@ using AI, prompt you to review and edit it, then commit it for you.
 
 ![cfme demo](./demo/demo.gif)
 
+> There is also a demo available showing how to use `cfme` from within
+> [Lazygit](https://github.com/jesseduffield/lazygit/).
+> Jump to the [Lazygit Integration](#lazygit) section below.
+
 ## Features ✨
 
 - **AI-Powered Commit Messages** - Leverages modern AI models
@@ -275,7 +279,7 @@ There are three special template strings that `cfme` recognizes by default:
 
 - `<__GIT_DIFF__>` (required): Replaced with the output of `git diff --cached`
   (i.e. the staged changes)
-- `<__RESPONSE__REQUIREMENTS__>` (required): Replaced with a list of requirements
+- `<__RESPONSE_FORMAT_REQUIREMENTS__>` (required): Replaced with a list of requirements
   that dictates how the AI should format its response. This is essential so
   that `cfme` can parse the AI's response.
   Note that these requirements merely dictate the format of the response, they
@@ -425,7 +429,9 @@ CFME_DEFAULT_PROMPT_VARIABLES_FILE_FETCH_URL
 
 [Lazygit](https://github.com/jesseduffield/lazygit) is awesome.
 But `cfme` allows you to be even lazier! You can use `cfme`
-from within Lazygit's TUI to generate commit messages.
+from within Lazygit's TUI to generate commit messages:
+
+![cfme lazygit demo](./demo/lazygit-demo.gif)
 
 Just add the following custom command to your Lazygit config file
 (e.g. `~/.config/lazygit/config.yml`):
@@ -478,8 +484,9 @@ Example contributions include:
 - Added a new feature or fixed a bug? Pull request welcome!
 - Want to improve the documentation? Contributions are welcome!
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to contribute.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information on how to contribute.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE)
+file for details.
