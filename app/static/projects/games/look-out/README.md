@@ -36,13 +36,13 @@ directly, they get disturbed and start chasing you.
 
 Look at some images of how the game changes looks:
 
-![Before 1]({imageRoot}/before-1.png)
+![Before 1](/projects/games/look-out/before-1.png)
 
-![After 1]({imageRoot}/after-1.png)
+![After 1](/projects/games/look-out/after-1.png)
 
-![Before 2]({imageRoot}/before-2.png)
+![Before 2](/projects/games/look-out/before-2.png)
 
-![After 2]({imageRoot}/after-2.png)
+![After 2](/projects/games/look-out/after-2.png)
 
 Exploring further, the player will come across hostile monsters which slowly
 move towards you whenever you're not looking at them. These may remind you of
