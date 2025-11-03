@@ -6,10 +6,16 @@ const gamesPathExpr = /\/games\/.*/;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: {
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: '404.html'
+		}),
+		paths: {
+			base: ''
+		},
 		prerender: {
 			handleHttpError: ({ path, referrer, message }) => {
 				if (toolsPathExpr.test(path) || gamesPathExpr.test(path)) {
@@ -29,9 +35,7 @@ const config = {
 					`Missing ID during pre-rendering for ${path} (referrers: ${referrers.join(', ')}): ${message}`
 				);
 			}
-		},
-
-		adapter: adapter()
+		}
 	}
 };
 
