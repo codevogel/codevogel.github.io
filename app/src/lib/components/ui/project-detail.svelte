@@ -5,9 +5,5 @@
 	let { readme, project } = $props();
 </script>
 
-<img
-	src={getImagePath(project)}
-	alt={`${project.title} banner image`}
-	class=" mx-auto aspect-video max-w-prose"
-/>
+<img src={getImagePath(project)} alt={`${project.title} banner image`} class="mx-auto w-full max-w-prose " />
 <ReadmeRenderer {readme} {project} />
