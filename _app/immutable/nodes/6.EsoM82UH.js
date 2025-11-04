@@ -1,1 +1,0 @@
-import"../chunks/D_Hq1oE7.js";import{p as r,a as p,g as s,u as a}from"../chunks/B7iXcltT.js";import{P as c}from"../chunks/D_u8273U.js";function g(e,t){r(t,!0);const o=a(()=>t.data.projects);c(e,{type:"tool",get projects(){return s(o)}}),p()}export{g as component};
