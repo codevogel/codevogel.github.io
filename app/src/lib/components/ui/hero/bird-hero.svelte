@@ -31,7 +31,7 @@
 			{
 				chunks: [
 					{ text: 'Check out some of my ' },
-					{ text: 'projects', class: 'text-primary underline', href: '/projects' },
+					{ text: 'games', class: 'text-primary underline', href: '/games' },
 					{ text: ' and ' },
 					{ text: 'tools', class: 'text-primary underline', href: '/tools' },
 					{ text: '!' }
