@@ -7,13 +7,27 @@
 	import Footer from '$lib/components/ui/footer.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import ScrollToTopButton from '$lib/components/ui/scroll-to-top-button.svelte';
+	import { baseTitle, pages } from '$lib/assets/routes';
+	import { page } from '$app/state';
 	import {
 		setContentContainerContext,
 		setHeaderContainerContext,
 		setScrollContainerContext
 	} from '$lib/context';
+	import { projects } from '$lib/assets/data/projects';
 
 	let { children } = $props();
+
+	let title = $derived.by(() => {
+
+		if (page.url.pathname.startsWith('/games/') || page.url.pathname.startsWith('/tools/')) {
+			const slug = page.url.pathname.split('/')[2];
+			const projectTitle = projects.find((p) => p.slug === slug)?.title;
+			return projectTitle ? `${projectTitle} | ${baseTitle}` : baseTitle;
+		}
+		const t = pages.find((p) => p.path === page.url.pathname)?.title ?? baseTitle;
+		return t;
+	});
 
 	let scrollContainer: HTMLElement | undefined = $state();
 	let headerContainer: HTMLElement | undefined = $state();
@@ -61,6 +75,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>{title}</title>
 </svelte:head>
 
 <svelte:window onresize={setWindowHeight} />
