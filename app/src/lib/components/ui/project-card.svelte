@@ -3,6 +3,7 @@
 	import { getImagePath, type Project } from '$lib/assets/data/projects';
 	import { ExternalLinkIcon } from 'lucide-svelte';
 	import YoutubeEmbed from './youtube-embed.svelte';
+	import ClipSvg from '$lib/components/ui/logo/clip-svg.svelte';
 
 	let {
 		project,
@@ -18,8 +19,13 @@
 <a id={project.slug} {href} class="{baseClass} {className}" data-sveltekit-preload-data="false">
 	<Card.Root class="transition-std group-hover:bg-accent">
 		<Card.Header>
-			<Card.Title class="transition-std group-hover:text-primary">
+			<Card.Title class="transition-std flex flex-row justify-between group-hover:text-primary">
 				<h2>{project.title}{project.workStatus ? ' [WIP]' : ''}</h2>
+				{#if project.githubURL}
+					<a href={project.githubURL}>
+						<ClipSvg path="/logos/svg/logo-github.svg" scale={0.25} />
+					</a>
+				{/if}
 			</Card.Title>
 		</Card.Header>
 		<Card.Content class="flex flex-col gap-y-4 px-0">
