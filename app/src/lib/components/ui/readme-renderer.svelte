@@ -26,6 +26,8 @@
 		type RehypeInsertOptions
 	} from '$lib/rehype/rehype-insert';
 	import Section from '$lib/components/ui/section.svelte';
+	import { Badge } from '$lib/components/shadcn-svelte/ui/badge';
+	import ClipSvg from '$lib/components/ui/logo/clip-svg.svelte';
 
 	let { readme, project }: { readme: string; project: Project } = $props();
 
@@ -119,5 +121,17 @@
 	onclick={(e) => interceptLinkClicks(e)}
 	role="link"
 >
-	<Markdown md={readme} {plugins} />
+	<Markdown md={readme} {plugins}>
+		{#snippet h1(props)}
+			{@const { children, ...rest } = props}
+			<h1 {...rest}>
+				{@render children?.()}
+			</h1>
+			{#if project.githubURL}
+				<Badge href={project.githubURL} variant="outline" class="px-8">
+					<ClipSvg path="/logos/svg/logo-github.svg" scale={0.25} />View on GitHub
+				</Badge>
+			{/if}
+		{/snippet}
+	</Markdown>
 </Section>

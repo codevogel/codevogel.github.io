@@ -1,9 +1,16 @@
 <script lang="ts">
 	import { getImagePath } from '$lib/assets/data/projects';
+	import { Badge } from '$lib/components/shadcn-svelte/ui/badge';
+	import ClipSvg from '$lib/components/ui/logo/clip-svg.svelte';
 	import ReadmeRenderer from '$lib/components/ui/readme-renderer.svelte';
 
 	let { readme, project } = $props();
 </script>
 
-<img src={getImagePath(project)} alt={`${project.title} banner image`} class="mx-auto w-full max-w-prose " />
+<img
+	src={getImagePath(project)}
+	alt={`${project.title} banner image`}
+	class="mx-auto w-full max-w-prose"
+/>
+
 <ReadmeRenderer {readme} {project} />
