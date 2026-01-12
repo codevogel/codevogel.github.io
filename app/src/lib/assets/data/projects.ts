@@ -124,6 +124,17 @@ export const tools: Tool[] = [
 	},
 	{
 		type: 'tool',
+		title: 'Peck',
+		shortDescription: '📷 Easily capture Screenshots / Screen Recordings on Wayland.',
+		description:
+			'peck is a screen capture tool for Wayland. It provides easy ways to capture screenshots, record your screen, and optionally convert outputs to different formats. peck isn\'t a tool that tries to reinvent the wheel. Rather, it\'s just a simple wrapper bash script that makes interfacing with grim and wf-recorder easier.',
+		slug: 'peck',
+		readmeURL:
+			'https://raw.githubusercontent.com/codevogel/peck/refs/heads/main/README.md',
+		githubURL: 'https://github.com/codevogel/peck'
+	},
+	{
+		type: 'tool',
 		title: 'Faux 3D Perspective Shader',
 		shortDescription: 'A shader that creates a faux 3D perspective effect in Godot.',
 		description:
