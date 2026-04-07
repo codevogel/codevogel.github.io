@@ -108,7 +108,7 @@ export const tools: Tool[] = [
 			'A powerful validation plugin for Godot that catches errors before they reach runtime. Validate scenes, nodes, and resources using a declarative, test-driven approach. No @tool required!',
 		slug: 'godot-doctor',
 		readmeURL:
-			'https://raw.githubusercontent.com/codevogel/godot_doctor/refs/heads/main/README.md',
+			'https://raw.githubusercontent.com/codevogel/godot_doctor/refs/heads/main/addons/godot_doctor/README.md',
 		githubURL: 'https://github.com/codevogel/godot_doctor'
 	},
 	{
