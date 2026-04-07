@@ -1,1 +1,0 @@
-import"../chunks/CPdWO9vA.js";import{p as r,b as p,h as s,u as a}from"../chunks/BbMFilaF.js";import{P as c}from"../chunks/D2W2-9Wd.js";function g(t,e){r(e,!0);const o=a(()=>e.data.projects);c(t,{type:"game",get projects(){return s(o)}}),p()}export{g as component};
