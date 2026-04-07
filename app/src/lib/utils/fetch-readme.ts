@@ -13,12 +13,19 @@ export async function fetchReadmeForSlug(
 		const res = await fetchFn(project.readmeURL);
 		if (res.ok) {
 			console.log(`Successfully fetched README from GitHub URL: ${project.readmeURL}`);
-			const baseRawURL = `https://raw.githubusercontent.com/codevogel/${slug}/refs/heads/main/`;
+			const baseRawURL = project.githubRawURL;
 			readme = await res.text();
-			// Adjust relative paths in the README to absolute URLs
+			if (!baseRawURL) return readme;
+			// Adjust relative paths in the README to absolute URLs.
+			// Handles both dot-relative (./foo, ../foo) and root-relative (/foo) paths.
 			return readme.replace(
-				/([('"[])(\.{1,2}\/[^)\]'"]+)/g,
-				(_, prefix, relPath) => `${prefix}${baseRawURL}${relPath.replace(/^\.{1,2}\//, '')}`
+				/([('"[])((?:\.{1,2}\/|\/(?!\/))[^)\]'"#\s]+)/g,
+				(_, prefix, relPath) => {
+					const normalised = relPath.startsWith('/')
+						? relPath.slice(1)
+						: relPath.replace(/^\.{1,2}\//, '');
+					return `${prefix}${baseRawURL}${normalised}`;
+				}
 			);
 		}
 	} else {

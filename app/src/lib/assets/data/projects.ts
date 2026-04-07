@@ -10,6 +10,7 @@ export type Project = {
 	workStatus?: WorkStatus;
 	youtubeURL?: string;
 	readmeURL?: string;
+	githubRawURL?: string;
 	githubURL?: string;
 };
 
@@ -109,6 +110,7 @@ export const tools: Tool[] = [
 		slug: 'godot-doctor',
 		readmeURL:
 			'https://raw.githubusercontent.com/codevogel/godot_doctor/refs/heads/main/addons/godot_doctor/README.md',
+		githubRawURL: 'https://raw.githubusercontent.com/codevogel/godot_doctor/refs/heads/main/',
 		githubURL: 'https://github.com/codevogel/godot_doctor'
 	},
 	{
@@ -120,6 +122,7 @@ export const tools: Tool[] = [
 		slug: 'commit-for-me',
 		readmeURL:
 			'https://raw.githubusercontent.com/codevogel/commit-for-me/refs/heads/main/README.md',
+		githubRawURL: 'https://raw.githubusercontent.com/codevogel/commit-for-me/refs/heads/main/',
 		githubURL: 'https://github.com/codevogel/commit-for-me'
 	},
 	{
@@ -131,6 +134,7 @@ export const tools: Tool[] = [
 		slug: 'peck',
 		readmeURL:
 			'https://raw.githubusercontent.com/codevogel/peck/refs/heads/main/README.md',
+		githubRawURL: 'https://raw.githubusercontent.com/codevogel/peck/refs/heads/main/',
 		githubURL: 'https://github.com/codevogel/peck'
 	},
 	{
@@ -142,6 +146,7 @@ export const tools: Tool[] = [
 		slug: 'faux-3d-perspective-shader',
 		readmeURL:
 			'https://raw.githubusercontent.com/codevogel/faux-3d-perspective-shader-godot/refs/heads/main/README.md',
+		githubRawURL: 'https://raw.githubusercontent.com/codevogel/faux-3d-perspective-shader-godot/refs/heads/main/',
 		hasGif: true,
 		githubURL: 'https://github.com/codevogel/faux-3d-perspective-shader-godot'
 	},
@@ -153,6 +158,7 @@ export const tools: Tool[] = [
 			'A command-line tool that streamlines the creation of p5.js projects. With mkp5, you can quickly set up a new p5.js project with a single command.',
 		slug: 'mkp5',
 		readmeURL: 'https://raw.githubusercontent.com/codevogel/mkp5/refs/heads/main/README.md',
+		githubRawURL: 'https://raw.githubusercontent.com/codevogel/mkp5/refs/heads/main/',
 		githubURL: 'https://github.com/codevogel/mkp5'
 	},
 	{
@@ -164,6 +170,7 @@ export const tools: Tool[] = [
 			'Project Level Shortcuts (pls) is a command-line tool that allows you to create, manage, and execute custom context-aware aliases for frequently used commands using portable .pls.yml files.',
 		slug: 'pls',
 		readmeURL: 'https://raw.githubusercontent.com/codevogel/pls/refs/heads/main/README.md',
+		githubRawURL: 'https://raw.githubusercontent.com/codevogel/pls/refs/heads/main/',
 		githubURL: 'https://github.com/codevogel/pls'
 	},
 
@@ -176,6 +183,7 @@ export const tools: Tool[] = [
 		slug: 'circuit-patch-converter',
 		readmeURL:
 			'https://raw.githubusercontent.com/codevogel/CircuitPatchConverter/refs/heads/main/README.md',
+		githubRawURL: 'https://raw.githubusercontent.com/codevogel/CircuitPatchConverter/refs/heads/main/',
 		githubURL: 'https://github.com/codevogel/CircuitPatchConverter'
 	}
 ];
